@@ -9,6 +9,7 @@ import Work from "./pages/Work";
 import Journey from "./pages/Journey";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import InstagramSection from "./components/InstagramSection";
 
 const queryClient = new QueryClient();
 
