@@ -210,7 +210,7 @@
 
   /* Instagram Grid Tile */
   .insta-tile {
-    @apply overflow-hidden transition-all duration-400;
+    @apply overflow-hidden transition-all duration-300;
     border-radius: 1.25rem;
     box-shadow: var(--shadow-soft);
   }
