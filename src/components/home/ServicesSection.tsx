@@ -58,11 +58,14 @@ const ServicesSection = () => {
                   transition={{ delay: index * 0.1 }}
                 >
                   <Link
-                    to="/services"
-                    className="service-item text-2xl md:text-3xl lg:text-4xl text-foreground/80 hover:text-primary block py-2 border-b border-border/50"
-                  >
-                    {service}
-                  </Link>
+  to="/services"
+  className="service-item text-2xl md:text-3xl lg:text-4xl text-foreground/80 
+             hover:text-primary hover:italic 
+             block py-2 border-b border-border/50 transition-all duration-300"
+>
+  {service}
+</Link>
+
                 </motion.div>
               ))}
             </div>

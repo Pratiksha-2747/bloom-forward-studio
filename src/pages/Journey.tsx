@@ -7,6 +7,11 @@ import introImage from "@/assets/intro-image.jpg";
 import introHover from "@/assets/intro-hover.jpg";
 import servicesImage from "@/assets/services-image.jpg";
 import { Heart, Target, Sparkles, Users } from "lucide-react";
+import team1 from "@/assets/journey/team1.png";
+import team2 from "@/assets/journey/team2.png";
+import team3 from "@/assets/journey/team3.png";
+import team4 from "@/assets/journey/team4.png";
+import founder from "@/assets/journey/founder1.png";
 
 const coreValues = [
   {
@@ -36,25 +41,25 @@ const timeline = [
     year: "2020",
     title: "The Beginning",
     description: "Bloom Branding was founded with a vision to help brands tell their stories.",
-    image: introImage,
+    image: team1,
   },
   {
     year: "2021",
     title: "Growing Together",
     description: "Expanded our team and welcomed our first major brand partnerships.",
-    image: introHover,
+    image: team2,
   },
   {
     year: "2022",
     title: "Studio Launch",
     description: "Opened our dedicated creative studio space for production and collaboration.",
-    image: servicesImage,
+    image: team3,
   },
   {
     year: "2023",
     title: "Full-Service Agency",
     description: "Evolved into a comprehensive branding and digital experience agency.",
-    image: introImage,
+    image: team4,
   },
   {
     year: "2024",
@@ -101,9 +106,9 @@ const Journey = () => {
                 className="relative"
               >
                 <img
-                  src={introImage}
+                  src={founder}
                   alt="Bloom Branding Team"
-                  className="rounded-2xl shadow-strong w-full h-[450px] object-cover"
+                  className="rounded-2xl shadow-strong w-full h-[600px] object-cover"
                 />
                 <motion.div
                   initial={{ scale: 0 }}
@@ -194,18 +199,16 @@ const Journey = () => {
                     whileInView={{ opacity: 1, x: 0, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.8 }}
-                    className={`lg:grid lg:grid-cols-2 lg:gap-16 relative ${
-                      index % 2 === 0 ? "" : ""
-                    }`}
+                    className={`lg:grid lg:grid-cols-2 lg:gap-16 relative ${index % 2 === 0 ? "" : ""
+                      }`}
                   >
                     {/* Timeline Dot */}
                     <div className="absolute left-1/2 top-8 w-4 h-4 -ml-2 rounded-full bg-primary hidden lg:block" />
 
                     {/* Content */}
                     <div
-                      className={`${
-                        index % 2 === 0 ? "lg:text-right lg:pr-16" : "lg:col-start-2 lg:pl-16"
-                      } mb-6 lg:mb-24`}
+                      className={`${index % 2 === 0 ? "lg:text-right lg:pr-16" : "lg:col-start-2 lg:pl-16"
+                        } mb-6 lg:-mb-20`}
                     >
                       <div className="bg-white p-6 rounded-2xl shadow-soft inline-block lg:max-w-md">
                         <span className="text-primary font-serif text-2xl font-medium mb-2 block">
@@ -218,8 +221,9 @@ const Journey = () => {
                         <img
                           src={item.image}
                           alt={item.title}
-                          className="w-full h-32 object-cover rounded-lg"
+                          className="w-full h-80 md:h-100 object-cover rounded-xl"
                         />
+
                       </div>
                     </div>
                   </motion.div>
@@ -230,43 +234,46 @@ const Journey = () => {
         </section>
 
         {/* CTA */}
-        <section className="py-20 md:py-28 bg-primary">
-          <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
-                <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-primary-foreground leading-tight mb-6">
-                  Have a project that needs a fresh perspective?
-                </h2>
-                <p className="text-primary-foreground/80 leading-relaxed mb-8 max-w-lg">
-                  We're always excited to meet new brands and hear their stories.
-                  Let's start a conversation.
-                </p>
-                <Link
-                  to="/contact"
-                  className="inline-block bg-white text-primary px-8 py-4 rounded-lg font-medium hover:shadow-strong hover:-translate-y-1 transition-all duration-300"
-                >
-                  Inquire Now
-                </Link>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="hidden lg:block"
-              >
-                <img
-                  src={servicesImage}
-                  alt="Let's Work Together"
-                  className="rounded-2xl shadow-strong w-full h-[400px] object-cover"
-                />
-              </motion.div>
-            </div>
-          </div>
-        </section>
+       <section className="py-20 md:py-28 bg-[#624A41]">
+  <div className="container mx-auto px-6">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#E8E6D8] leading-tight mb-6">
+          Have a project that needs a fresh perspective?
+        </h2>
+        <p className="text-[#E8E6D8]/80 leading-relaxed mb-8 max-w-lg">
+          We're always excited to meet new brands and hear their stories.
+          Let's start a conversation.
+        </p>
+        <Link
+          to="/contact"
+          className="inline-block bg-[#E8E6D8] text-[#624A41] px-8 py-4 rounded-lg font-medium
+                     hover:shadow-strong hover:-translate-y-1 transition-all duration-300"
+        >
+          Inquire Now
+        </Link>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        className="hidden lg:block"
+      >
+        <img
+          src={servicesImage}
+          alt="Let's Work Together"
+          className="rounded-2xl shadow-strong w-full h-[400px] object-cover opacity-95"
+        />
+      </motion.div>
+    </div>
+  </div>
+</section>
+
       </main>
       <Footer />
     </div>

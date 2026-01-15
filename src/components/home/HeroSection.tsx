@@ -50,9 +50,6 @@ const HeroSection = () => {
             transition={{ delay: 0.8 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Link to="/contact" className="btn-hero">
-              Let's Get Started
-            </Link>
             <Link
               to="/work"
               className="px-8 py-4 text-sm font-medium tracking-wider uppercase border-2 border-foreground/20 rounded-lg hover:border-primary hover:text-primary transition-all duration-300"

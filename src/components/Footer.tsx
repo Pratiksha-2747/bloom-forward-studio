@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Mail, Phone } from "lucide-react";
-import bloomLogoMark from "@/assets/bloom-logo-mark.png";
+import bloomLogoMark from "@/assets/bloom-logo_mini.jpeg";
 
 const Footer = () => {
   const navLinks = [
@@ -12,7 +12,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-bloom-cream py-16 border-t border-border">
+    <footer className="bg-[#624A41] text-[#E8E6D8] py-16 border-t border-[#E8E6D8]/20">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Column */}
@@ -20,9 +20,11 @@ const Footer = () => {
             <img
               src={bloomLogoMark}
               alt="Bloom Branding"
-              className="h-16 w-16 object-contain mb-6"
+              className="h-28 w-28 object-contain mb-6 rounded-lg"
             />
-            <p className="text-muted-foreground text-sm leading-relaxed mb-6 max-w-xs">
+
+            <p className="text-[#E8E6D8]/80 text-sm leading-relaxed mb-6 max-w-xs">
+
               A creative branding studio that helps brands grow through strategic 
               storytelling, content creation, and high-impact digital experiences.
             </p>
@@ -31,14 +33,18 @@ const Footer = () => {
                 href="https://www.instagram.com/bloom.branding_/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+                className="w-10 h-10 rounded-full bg-[#E8E6D8]/10 flex items-center justify-center
+           transition-all duration-300 text-[#E8E6D8]
+           hover:bg-[#E8E6D8] hover:text-[#624A41]"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
                 href="mailto:hello.bloombranding@gmail.com"
-                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
-              >
+               className="w-10 h-10 rounded-full bg-[#E8E6D8]/10 flex items-center justify-center
+           transition-all duration-300 text-[#E8E6D8]
+           hover:bg-[#E8E6D8] hover:text-[#624A41]"
+>
                 <Mail className="w-5 h-5" />
               </a>
             </div>
@@ -52,7 +58,8 @@ const Footer = () => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className="footer-link text-muted-foreground hover:text-foreground transition-colors text-sm"
+                  className="footer-link text-[#E8E6D8]/70 hover:text-[#E8E6D8] transition-colors text-sm"
+
                 >
                   {link.name}
                 </Link>
@@ -66,14 +73,14 @@ const Footer = () => {
             <div className="space-y-4">
               <a
                 href="mailto:hello.bloombranding@gmail.com"
-                className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors text-sm"
+                className="flex items-center gap-3 text-[#E8E6D8]/80 hover:text-[#E8E6D8] transition-colors text-sm"
               >
                 <Mail className="w-4 h-4" />
                 hello.bloombranding@gmail.com
               </a>
               <a
                 href="tel:+919876543210"
-                className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors text-sm"
+                className="flex items-center gap-3 text-[#E8E6D8]/80 hover:text-[#E8E6D8] transition-colors text-sm"
               >
                 <Phone className="w-4 h-4" />
                 +91 98765 43210
@@ -82,7 +89,7 @@ const Footer = () => {
                 href="https://www.instagram.com/bloom.branding_/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors text-sm"
+                className="flex items-center gap-3 text-[#E8E6D8]/80 hover:text-[#E8E6D8] transition-colors text-sm"
               >
                 <Instagram className="w-4 h-4" />
                 @bloom.branding_
@@ -92,11 +99,11 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
+        <div className="mt-12 pt-8 border-t border-[#E8E6D8]/20 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-[#E8E6D8]/70">
             © {new Date().getFullYear()} Bloom Branding. All rights reserved.
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-[#E8E6D8]/70">
             Crafted with ♥ for brands that bloom
           </p>
         </div>

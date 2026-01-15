@@ -2,10 +2,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import work1 from "@/assets/work-1.jpg";
-import work2 from "@/assets/work-2.jpg";
-import work3 from "@/assets/work-3.jpg";
-import work4 from "@/assets/work-4.jpg";
+import work1 from "@/assets/work/work1.jpeg";
+import work2 from "@/assets/work/work2.jpeg";
+import work3 from "@/assets/work/work3.jpeg";
+import work4 from "@/assets/work/work4.jpeg";
+import work5 from "@/assets/work/work5.jpeg";
+import work6 from "@/assets/work/work6.jpeg";
 import introImage from "@/assets/intro-image.jpg";
 import servicesImage from "@/assets/services-image.jpg";
 
@@ -24,7 +26,7 @@ const works = [
     category: "Visual Identity + Lifestyle",
     description:
       "For Life's A Beach, we didn't design products for occasions. We designed them for moments — sun-drenched afternoons, salty hair, slow walks by the shore, and memories that stay long after the tide recedes. 🌴✨",
-    image: work2,
+    image: work3,
   },
   {
     id: 3,
@@ -32,7 +34,7 @@ const works = [
     category: "Fashion Branding",
     description:
       "For Binal Patel, we didn't focus on trends or seasons alone. We focused on emotion — the quiet confidence of a woman, the grace in her movement, and the stories woven into every silhouette. ✨",
-    image: work3,
+    image: work4,
   },
   {
     id: 4,
@@ -40,7 +42,7 @@ const works = [
     category: "Cafe Branding + Content",
     description:
       "At Thyme & Whisk, we didn't just shape a menu. We shaped moments — slow mornings, unhurried conversations, the comfort of familiar flavors, and the joy of something thoughtfully made. 🍃☕",
-    image: work4,
+    image: work5,
   },
   {
     id: 5,
@@ -48,7 +50,7 @@ const works = [
     category: "Home & Lifestyle",
     description:
       "For Moire Rugs, we didn't focus only on patterns and textures. We focused on the quiet luxury of everyday living — soft mornings, sunlit corners, and homes that tell stories through detail. ✨",
-    image: introImage,
+    image: work6,
   },
   {
     id: 6,
@@ -56,7 +58,7 @@ const works = [
     category: "Creative Agency",
     description:
       "Where possible, your logo should tell a story. A short, remarkable, to-the-point kind of story 🌻",
-    image: servicesImage,
+    image: work2,
   },
 ];
 
@@ -259,28 +261,30 @@ const Work = () => {
         </section>
 
         {/* CTA */}
-        <section className="py-20 md:py-28 bg-primary">
-          <div className="container mx-auto px-6 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-primary-foreground mb-6">
-                Ready to tell your story?
-              </h2>
-              <p className="text-primary-foreground/80 max-w-lg mx-auto mb-8">
-                Let's create something beautiful together.
-              </p>
-              <Link
-                to="/contact"
-                className="inline-block bg-white text-primary px-8 py-4 rounded-lg font-medium hover:shadow-strong hover:-translate-y-1 transition-all duration-300"
-              >
-                Start a Project
-              </Link>
-            </motion.div>
-          </div>
-        </section>
+        <section className="py-20 md:py-28 bg-[#624A41]">
+  <div className="container mx-auto px-6 text-center">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+    >
+      <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#E8E6D8] mb-6">
+        Ready to tell your story?
+      </h2>
+      <p className="text-[#E8E6D8]/80 max-w-lg mx-auto mb-8">
+        Let's create something beautiful together.
+      </p>
+      <Link
+        to="/contact"
+        className="inline-block bg-[#E8E6D8] text-[#624A41] px-8 py-4 rounded-lg font-medium
+                   hover:shadow-strong hover:-translate-y-1 transition-all duration-300"
+      >
+        Start a Project
+      </Link>
+    </motion.div>
+  </div>
+</section>
+
       </main>
       <Footer />
     </div>

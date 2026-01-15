@@ -3,7 +3,12 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import servicesImage from "@/assets/services-image.jpg";
-import introImage from "@/assets/intro-image.jpg";
+import c1 from "@/assets/service/main.jpeg";
+import brand from "@/assets/service/brand.jpeg";
+import marketing from "@/assets/service/marketing.jpeg";
+import production from "@/assets/service/production.jpeg";
+import infl from "@/assets/service/infl.jpeg";
+import creative from "@/assets/service/creative.jpeg";
 import { Check } from "lucide-react";
 
 const services = [
@@ -20,7 +25,7 @@ const services = [
       "Brand Guidelines",
       "Packaging Design",
     ],
-    image: servicesImage,
+    image: brand,
   },
   {
     id: 2,
@@ -35,7 +40,7 @@ const services = [
       "Analytics & Reporting",
       "Paid Social Campaigns",
     ],
-    image: introImage,
+    image: marketing,
   },
   {
     id: 3,
@@ -50,7 +55,7 @@ const services = [
       "Post-Production",
       "Art Direction",
     ],
-    image: servicesImage,
+    image: production,
   },
   {
     id: 4,
@@ -65,7 +70,7 @@ const services = [
       "Performance Tracking",
       "Content Collaboration",
     ],
-    image: introImage,
+    image: infl,
   },
   {
     id: 5,
@@ -80,7 +85,7 @@ const services = [
       "Digital Assets",
       "Print Design",
     ],
-    image: servicesImage,
+    image: creative,
   },
 ];
 
@@ -120,7 +125,7 @@ const Services = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <img
-                  src={introImage}
+                  src={c1}
                   alt="Our Services"
                   className="rounded-2xl shadow-strong w-full h-[400px] object-cover"
                 />
@@ -133,15 +138,13 @@ const Services = () => {
         {services.map((service, index) => (
           <section
             key={service.id}
-            className={`py-20 md:py-28 ${
-              index % 2 === 0 ? "bg-background" : "bg-bloom-cream"
-            }`}
+            className={`py-20 md:py-28 ${index % 2 === 0 ? "bg-background" : "bg-bloom-cream"
+              }`}
           >
             <div className="container mx-auto px-6">
               <div
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${
-                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${index % 2 === 1 ? "lg:flex-row-reverse" : ""
+                  }`}
               >
                 {/* Text Column */}
                 <motion.div
@@ -178,15 +181,15 @@ const Services = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
-                  className={`flex items-center justify-center ${
-                    index % 2 === 1 ? "lg:order-1" : ""
-                  }`}
+                  className={`flex items-center justify-center ${index % 2 === 1 ? "lg:order-1" : ""
+                    }`}
                 >
-                  <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-primary/10 flex items-center justify-center">
-                    <span className="font-serif text-6xl md:text-8xl text-primary">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                  </div>
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover rounded-2xl shadow-strong"
+                  />
+
                 </motion.div>
               </div>
             </div>
@@ -194,43 +197,46 @@ const Services = () => {
         ))}
 
         {/* CTA Section */}
-        <section className="py-20 md:py-28 bg-primary">
-          <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
-                <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-primary-foreground leading-tight mb-6">
-                  Have a project that needs a fresh perspective?
-                </h2>
-                <p className="text-primary-foreground/80 leading-relaxed mb-8 max-w-lg">
-                  Let's collaborate and create something extraordinary together.
-                  We're always excited to hear about new projects and ideas.
-                </p>
-                <Link
-                  to="/contact"
-                  className="inline-block bg-white text-primary px-8 py-4 rounded-lg font-medium hover:shadow-strong hover:-translate-y-1 transition-all duration-300"
-                >
-                  Inquire Now
-                </Link>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="hidden lg:block"
-              >
-                <img
-                  src={servicesImage}
-                  alt="Let's Work Together"
-                  className="rounded-2xl shadow-strong w-full h-[400px] object-cover"
-                />
-              </motion.div>
-            </div>
-          </div>
-        </section>
+        <section className="py-20 md:py-28 bg-[#624A41]">
+  <div className="container mx-auto px-6">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#E8E6D8] leading-tight mb-6">
+          Have a project that needs a fresh perspective?
+        </h2>
+        <p className="text-[#E8E6D8]/80 leading-relaxed mb-8 max-w-lg">
+          Let's collaborate and create something extraordinary together.
+          We're always excited to hear about new projects and ideas.
+        </p>
+        <Link
+          to="/contact"
+          className="inline-block bg-[#E8E6D8] text-[#624A41] px-8 py-4 rounded-lg font-medium
+                     hover:shadow-strong hover:-translate-y-1 transition-all duration-300"
+        >
+          Inquire Now
+        </Link>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        className="hidden lg:block"
+      >
+        <img
+          src={servicesImage}
+          alt="Let's Work Together"
+          className="rounded-2xl shadow-strong w-full h-[400px] object-cover opacity-95"
+        />
+      </motion.div>
+    </div>
+  </div>
+</section>
+
       </main>
       <Footer />
     </div>

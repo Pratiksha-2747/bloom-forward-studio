@@ -49,7 +49,7 @@ const Contact = () => {
               animate={{ opacity: 1, y: 0 }}
             >
               <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-4">
-                ✨ Let's <span className="italic text-primary">Collaborate</span> ✨
+                 Let's <span className="italic text-primary">Collaborate</span> 
               </h1>
               <p className="text-xl text-muted-foreground">
                 Start your brand journey with us!
