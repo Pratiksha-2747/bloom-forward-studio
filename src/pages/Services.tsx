@@ -5,10 +5,13 @@ import { Link } from "react-router-dom";
 import servicesImage from "@/assets/services-image.jpg";
 import introImage from "@/assets/intro-image.jpg";
 import { Check } from "lucide-react";
+import { useEffect, useState } from "react";
+import { db } from "@/lib/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 const services = [
   {
-    id: 1,
+    id: "service-1",
     title: "Branding",
     eyebrow: "Brand Identity",
     description:
@@ -20,10 +23,10 @@ const services = [
       "Brand Guidelines",
       "Packaging Design",
     ],
-    image: servicesImage,
+    fallback: servicesImage,
   },
   {
-    id: 2,
+    id: "service-2",
     title: "Social Media Marketing",
     eyebrow: "Digital Presence",
     description:
@@ -35,10 +38,10 @@ const services = [
       "Analytics & Reporting",
       "Paid Social Campaigns",
     ],
-    image: introImage,
+    fallback: introImage,
   },
   {
-    id: 3,
+    id: "service-3",
     title: "Production",
     eyebrow: "Creative Content",
     description:
@@ -50,10 +53,10 @@ const services = [
       "Post-Production",
       "Art Direction",
     ],
-    image: servicesImage,
+    fallback: servicesImage,
   },
   {
-    id: 4,
+    id: "service-4",
     title: "Influencer Marketing",
     eyebrow: "Strategic Partnerships",
     description:
@@ -65,10 +68,10 @@ const services = [
       "Performance Tracking",
       "Content Collaboration",
     ],
-    image: introImage,
+    fallback: introImage,
   },
   {
-    id: 5,
+    id: "service-5",
     title: "Creative Design",
     eyebrow: "Visual Excellence",
     description:
@@ -80,11 +83,27 @@ const services = [
       "Digital Assets",
       "Print Design",
     ],
-    image: servicesImage,
+    fallback: servicesImage,
   },
 ];
 
 const Services = () => {
+  const [images, setImages] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    const loadImages = async () => {
+      const result: Record<string, string> = {};
+      for (const service of services) {
+        const snap = await getDoc(doc(db, "services", service.id));
+        result[service.id] = snap.exists()
+          ? snap.data().imageUrl
+          : service.fallback;
+      }
+      setImages(result);
+    };
+    loadImages();
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -120,7 +139,7 @@ const Services = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <img
-                  src={introImage}
+                  src={images["service-1"] || introImage}
                   alt="Our Services"
                   className="rounded-2xl shadow-strong w-full h-[400px] object-cover"
                 />
@@ -172,7 +191,7 @@ const Services = () => {
                   </ul>
                 </motion.div>
 
-                {/* Icon/Image Column */}
+                {/* Icon/Image Column (UNCHANGED DESIGN) */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -207,7 +226,6 @@ const Services = () => {
                 </h2>
                 <p className="text-primary-foreground/80 leading-relaxed mb-8 max-w-lg">
                   Let's collaborate and create something extraordinary together.
-                  We're always excited to hear about new projects and ideas.
                 </p>
                 <Link
                   to="/contact"

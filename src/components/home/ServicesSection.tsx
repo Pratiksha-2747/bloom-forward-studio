@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import servicesImage from "@/assets/services-image.jpg";
+import { useEffect, useState } from "react";
+import { db } from "@/lib/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 const services = [
   "Brand Strategy",
@@ -11,11 +14,20 @@ const services = [
 ];
 
 const ServicesSection = () => {
+  const [image, setImage] = useState(servicesImage);
+
+  useEffect(() => {
+    const load = async () => {
+      const snap = await getDoc(doc(db, "services", "service-1"));
+      if (snap.exists()) setImage(snap.data().imageUrl);
+    };
+    load();
+  }, []);
+
   return (
     <section className="py-24 md:py-32 bg-bloom-cream">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Image Column */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -25,7 +37,7 @@ const ServicesSection = () => {
           >
             <div className="relative rounded-3xl overflow-hidden shadow-strong">
               <img
-                src={servicesImage}
+                src={image}
                 alt="Our Services"
                 className="w-full h-[500px] lg:h-[600px] object-cover"
               />
@@ -33,7 +45,6 @@ const ServicesSection = () => {
             </div>
           </motion.div>
 
-          {/* Text Column */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}

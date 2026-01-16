@@ -1,0 +1,78 @@
+/* =========================
+   Instagram Admin Page
+========================= */
+
+.admin-instagram {
+  padding: 2rem;
+}
+
+.admin-description {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.instagram-add {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.instagram-add input {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 0.9rem;
+}
+
+.instagram-add button {
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  background: transparent;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.instagram-add button:hover {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+.instagram-list {
+  max-width: 600px;
+}
+
+.instagram-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.instagram-item a {
+  font-size: 0.85rem;
+  color: #333;
+  word-break: break-all;
+}
+
+.instagram-item button {
+  background: transparent;
+  border: 1px solid #ddd;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.instagram-item button:hover {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
