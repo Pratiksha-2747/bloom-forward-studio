@@ -184,19 +184,19 @@ const Dashboard = () => {
         <h2 className="text-xl font-serif font-medium mb-4">Admin Management</h2>
         <div className="space-y-4">
           <div>
-            <h3 className="text-sm font-medium text-muted-foreground mb-2">Firebase Admin System</h3>
+            <h3 className="text-sm font-medium text-muted-foreground mb-2">Firebase Authentication System</h3>
             <div className="bg-muted/50 p-4 rounded-lg">
               <p className="text-sm text-muted-foreground mb-2">
-                Admin access is now managed through Firebase Firestore. Authorized admins are stored in the <code className="bg-background px-1 py-0.5 rounded text-xs">'admins'</code> collection.
+                Admin access is granted to any user with a valid Firebase Authentication account. Simply create user accounts in Firebase Auth to grant admin access.
               </p>
               <p className="text-sm text-muted-foreground">
-                Each admin document uses the email as the document ID with data: <code className="bg-background px-1 py-0.5 rounded text-xs">{"{isAdmin: true, role: 'admin'}"}</code>
+                No additional configuration needed - authentication is handled entirely through Firebase.
               </p>
             </div>
           </div>
           <div className="text-sm text-muted-foreground">
             <p>
-              To add or remove admin access, manage documents in the Firestore <code className="bg-muted px-1 py-0.5 rounded text-xs">'admins'</code> collection
+              To add admin access, create a new user account in Firebase Authentication Console
             </p>
             <p className="text-sm text-muted-foreground mt-2">
               Admin panel URL: <code className="bg-muted px-1 py-0.5 rounded text-xs">/bloom-admin</code>
