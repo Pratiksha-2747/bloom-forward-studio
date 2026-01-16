@@ -86,10 +86,18 @@ const Leads = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.1 }}
-          className="text-3xl font-semibold text-foreground mb-6"
+          className="text-4xl font-serif text-foreground mb-2"
         >
-          Leads
+          Leads Management
         </motion.h1>
+        <motion.p
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="text-lg text-muted-foreground mb-8"
+        >
+          View and manage contact form submissions.
+        </motion.p>
 
         {/* Search & Filter */}
         <motion.div

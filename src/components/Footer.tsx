@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, Mail, Phone } from "lucide-react";
+import { Instagram, Mail, Phone, Linkedin, Facebook } from "lucide-react";
 import bloomLogoMark from "@/assets/bloom-logo_mini.jpeg";
 
 const Footer = () => {
@@ -47,6 +47,26 @@ const Footer = () => {
 >
                 <Mail className="w-5 h-5" />
               </a>
+              <a
+                href="https://in.linkedin.com/company/bloombranding-digital-media-marketing-branding-agency"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-[#E8E6D8]/10 flex items-center justify-center
+           transition-all duration-300 text-[#E8E6D8]
+           hover:bg-[#E8E6D8] hover:text-[#624A41]"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.facebook.com/hello.bloombranding/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-[#E8E6D8]/10 flex items-center justify-center
+           transition-all duration-300 text-[#E8E6D8]
+           hover:bg-[#E8E6D8] hover:text-[#624A41]"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
             </div>
           </div>
 
@@ -93,6 +113,24 @@ const Footer = () => {
               >
                 <Instagram className="w-4 h-4" />
                 @bloom.branding_
+              </a>
+              <a
+                href="https://in.linkedin.com/company/bloombranding-digital-media-marketing-branding-agency"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-[#E8E6D8]/80 hover:text-[#E8E6D8] transition-colors text-sm"
+              >
+                <Linkedin className="w-4 h-4" />
+                Bloom Branding Studio
+              </a>
+              <a
+                href="https://www.facebook.com/hello.bloombranding/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-[#E8E6D8]/80 hover:text-[#E8E6D8] transition-colors text-sm"
+              >
+                <Facebook className="w-4 h-4" />
+                Bloom Branding Studio
               </a>
             </div>
           </div>

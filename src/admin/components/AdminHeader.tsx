@@ -1,29 +1,48 @@
 import { signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { LogOut } from "lucide-react";
+import bloomLogo from "@/assets/bloom-logo-text.jpeg";
 
 const AdminHeader = () => {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     await signOut(auth);
-    navigate("/admin/login");
+    navigate("/bloom-admin/login");
   };
 
   return (
-    <header className="bg-card border-b border-border">
+    <motion.header
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+      className="bg-card/80 backdrop-blur-md border-b border-border shadow-soft"
+    >
       <div className="px-6 py-4 flex items-center justify-between">
-        <h1 className="text-2xl font-semibold text-foreground">
-          Bloom Branding Admin
-        </h1>
-        <button
+        <div className="flex items-center gap-4">
+          <img
+            src={bloomLogo}
+            alt="Bloom Branding"
+            className="h-8 w-auto object-contain"
+          />
+          <div className="h-6 w-px bg-border"></div>
+          <h1 className="text-xl font-serif text-foreground">
+            Admin Panel
+          </h1>
+        </div>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           onClick={handleLogout}
-          className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition"
+          className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition shadow-soft"
         >
+          <LogOut className="w-4 h-4" />
           Logout
-        </button>
+        </motion.button>
       </div>
-    </header>
+    </motion.header>
   );
 };
 

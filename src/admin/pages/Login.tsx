@@ -17,7 +17,7 @@ const Login = () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/admin/dashboard");
+      navigate("/bloom-admin");
     } catch (err: any) {
       setError("Invalid email or password");
     } finally {
@@ -31,9 +31,12 @@ const Login = () => {
         onSubmit={handleLogin}
         className="w-full max-w-sm rounded-2xl bg-card p-8 shadow-lg"
       >
-        <h1 className="mb-6 text-center text-2xl font-semibold">
+        <h1 className="mb-2 text-center text-2xl font-serif font-semibold">
           Admin Login
         </h1>
+        <p className="mb-6 text-center text-sm text-muted-foreground">
+          Restricted access - Administrators only
+        </p>
 
         {error && (
           <p className="mb-4 text-sm text-red-600 text-center">{error}</p>

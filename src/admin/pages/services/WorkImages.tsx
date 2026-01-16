@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getDoc, setDoc, doc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import AdminHeader from "../../components/AdminHeader";
+import { motion } from "framer-motion";
 
 interface WorkPageImages {
   workImage1?: string;
@@ -12,7 +12,7 @@ interface WorkPageImages {
   workImage6?: string;
 }
 
-const Work = () => {
+const WorkImages = () => {
   const [images, setImages] = useState<WorkPageImages>({});
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -71,29 +71,45 @@ const Work = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-background">
-        <AdminHeader />
-        <div className="p-8">
-          <p className="text-muted-foreground">Loading...</p>
-        </div>
+      <div className="space-y-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h1 className="text-4xl font-serif text-foreground mb-2">
+            Our Work Images
+          </h1>
+          <p className="text-lg text-muted-foreground">
+            Loading image management...
+          </p>
+        </motion.div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <AdminHeader />
-
-      <div className="p-8">
-        <h1 className="text-3xl font-semibold text-foreground mb-2">
+    <div className="space-y-8">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <h1 className="text-4xl font-serif text-foreground mb-2">
           Our Work Images
         </h1>
-        <p className="text-muted-foreground mb-8">
-          Update image URLs for the Our Work page.
+        <p className="text-lg text-muted-foreground">
+          Manage portfolio showcase images.
         </p>
+      </motion.div>
 
-        <div className="max-w-2xl">
-          <div className="rounded-xl bg-card p-6 shadow-soft">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="max-w-2xl"
+      >
+        <div className="rounded-xl bg-card p-6 shadow-soft border border-border/50">
             {fields.map(({ key, label }) => (
               <div key={key} className="mb-4">
                 <label className="block text-sm font-medium text-foreground mb-2">
@@ -128,11 +144,10 @@ const Work = () => {
                 </span>
               )}
             </div>
-          </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
 
-export default Work;
+export default WorkImages;

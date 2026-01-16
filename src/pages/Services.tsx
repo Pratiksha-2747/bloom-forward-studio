@@ -259,43 +259,11 @@ const Services = () => {
           </section>
         ))}
 
-        {/* CTA Section */}
-        <section className="py-20 md:py-28 bg-primary">
-          <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
-                <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-primary-foreground leading-tight mb-6">
-                  Have a project that needs a fresh perspective?
-                </h2>
-                <p className="text-primary-foreground/80 leading-relaxed mb-8 max-w-lg">
-                  Let's collaborate and create something extraordinary together.
-                </p>
-                <Link
-                  to="/contact"
-                  className="inline-block bg-white text-primary px-8 py-4 rounded-lg font-medium hover:shadow-strong hover:-translate-y-1 transition-all duration-300"
-                >
-                  Inquire Now
-                </Link>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="hidden lg:block"
-              >
-                <img
-                  src={servicesImage}
-                  alt="Let's Work Together"
-                  className="rounded-2xl shadow-strong w-full h-[400px] object-cover"
-                />
-              </motion.div>
-            </div>
-          </div>
-        </section>
+        
+
+
+
+
         <section className="py-20 md:py-28 bg-[#624A41]">
   <div className="container mx-auto px-6">
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
