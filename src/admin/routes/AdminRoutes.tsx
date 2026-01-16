@@ -1,25 +1,32 @@
 /**
  * Admin Routes Configuration
  *
- * This file handles routing for the admin panel with role-based access control.
+ * This file handles routing for the admin panel with Firebase-based role access control.
  *
  * ADMIN ACCESS CONTROL:
- * - Only users with emails listed in ADMIN_EMAILS can access admin routes
- * - To add/remove admin access, update the ADMIN_EMAILS array below
- * - Users must be authenticated with Firebase AND be in the admin list
+ * - Admin status is determined by documents in the 'admins' Firestore collection
+ * - Each admin document has the user's email as the document ID
+ * - Document structure: { isAdmin: true, role: "admin", addedBy: "system" }
+ * - Users must be authenticated with Firebase AND have an admin document in Firestore
  * - Admin panel is accessible at: /bloom-admin (not /admin for security)
  *
  * SECURITY FLOW:
  * 1. User navigates to /bloom-admin (hidden/obscure path)
  * 2. User authenticates with Firebase (email/password)
- * 3. System checks if user's email is in ADMIN_EMAILS
- * 4. If admin: show admin routes, else: show access denied page
+ * 3. System queries Firestore 'admins' collection for user's email
+ * 4. If admin document exists: show admin routes, else: show access denied page
+ *
+ * TO ADD/REMOVE ADMINS:
+ * - Add/remove documents in Firestore 'admins' collection
+ * - Document ID should be the admin's email address
+ * - Document data: { isAdmin: true, role: "admin", addedAt: new Date() }
  */
 
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@/lib/firebase";
+import { auth, db } from "@/lib/firebase";
 import { useEffect, useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
 
 import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
@@ -34,40 +41,53 @@ import ServicesImages from "../pages/services/ServicesImages";
 
 import AdminLayout from "../components/AdminLayout";
 
-// List of admin emails - only these users can access admin panel
-// TODO: Replace with actual admin emails or implement a more dynamic system
-const ADMIN_EMAILS = [
-  "pratikshajani70@gmail.com",
-  "artijangid73@gmail.com",
-  "ritunaik53@gmail.com",
-  "rimjhimgondane@gmail.com"
-  // Add more admin emails here
-];
+// Firebase-based admin check function
+const checkAdminStatus = async (email: string): Promise<boolean> => {
+  try {
+    // Check if user exists in admins collection
+    const adminDocRef = doc(db, "admins", email);
+    const adminDoc = await getDoc(adminDocRef);
 
-// Utility function to check if user is admin
-const isUserAdmin = (email: string | null): boolean => {
-  return email ? ADMIN_EMAILS.includes(email) : false;
+    return adminDoc.exists() && adminDoc.data()?.isAdmin === true;
+  } catch (error) {
+    console.error("Error checking admin status:", error);
+    return false;
+  }
 };
 
 const AdminRoutes = () => {
   const [user, loading] = useAuthState(auth);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [adminCheckLoading, setAdminCheckLoading] = useState(false);
 
   useEffect(() => {
-    if (user) {
-      // Check if the authenticated user is an admin
-      setIsAdmin(isUserAdmin(user.email));
-    } else {
-      setIsAdmin(false);
-    }
+    const verifyAdminStatus = async () => {
+      if (user?.email) {
+        setAdminCheckLoading(true);
+        try {
+          const adminStatus = await checkAdminStatus(user.email);
+          setIsAdmin(adminStatus);
+        } catch (error) {
+          console.error("Error verifying admin status:", error);
+          setIsAdmin(false);
+        } finally {
+          setAdminCheckLoading(false);
+        }
+      } else {
+        setIsAdmin(false);
+        setAdminCheckLoading(false);
+      }
+    };
+
+    verifyAdminStatus();
   }, [user]);
 
-  if (loading) {
+  if (loading || adminCheckLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-bloom-cream via-background to-bloom-cream/50">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading...</p>
+          <p className="text-muted-foreground">Verifying admin access...</p>
         </div>
       </div>
     );

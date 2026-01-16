@@ -184,27 +184,19 @@ const Dashboard = () => {
         <h2 className="text-xl font-serif font-medium mb-4">Admin Management</h2>
         <div className="space-y-4">
           <div>
-            <h3 className="text-sm font-medium text-muted-foreground mb-2">Authorized Admin Emails</h3>
-            <div className="flex flex-wrap gap-2">
-              {[
-                "artijangid73@gmail.com",
-                "pratikshajani70@gmail.com",
-                "ritunaik53@gmail.com",
-                "rimjhimgondane@gmail.com"
-              ].map((email) => (
-                <span
-                  key={email}
-                  className="inline-flex items-center px-3 py-1 rounded-full text-xs bg-primary/10 text-primary border border-primary/20"
-                >
-                  {email}
-                </span>
-              ))}
+            <h3 className="text-sm font-medium text-muted-foreground mb-2">Firebase Admin System</h3>
+            <div className="bg-muted/50 p-4 rounded-lg">
+              <p className="text-sm text-muted-foreground mb-2">
+                Admin access is now managed through Firebase Firestore. Authorized admins are stored in the <code className="bg-background px-1 py-0.5 rounded text-xs">'admins'</code> collection.
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Each admin document uses the email as the document ID with data: <code className="bg-background px-1 py-0.5 rounded text-xs">{"{isAdmin: true, role: 'admin'}"}</code>
+              </p>
             </div>
           </div>
           <div className="text-sm text-muted-foreground">
             <p>
-              To add or remove admin access, update the <code className="bg-muted px-1 py-0.5 rounded text-xs">ADMIN_EMAILS</code> array in{" "}
-              <code className="bg-muted px-1 py-0.5 rounded text-xs">src/admin/routes/AdminRoutes.tsx</code>
+              To add or remove admin access, manage documents in the Firestore <code className="bg-muted px-1 py-0.5 rounded text-xs">'admins'</code> collection
             </p>
             <p className="text-sm text-muted-foreground mt-2">
               Admin panel URL: <code className="bg-muted px-1 py-0.5 rounded text-xs">/bloom-admin</code>

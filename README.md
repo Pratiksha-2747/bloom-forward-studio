@@ -146,8 +146,16 @@ bloom-forward-studio/
 
 ### Admin Access
 - Default admin route: `/bloom-admin`
-- Authentication required for content management
-- Configure initial admin credentials in Firebase
+- Authentication: Firebase email/password
+- Authorization: Firestore 'admins' collection
+- Configure admin users in Firebase Firestore
+
+### Setting up Admin Users
+1. Open Firebase Console → Firestore Database
+2. Create collection named `admins`
+3. Add documents with email as document ID
+4. Document structure: `{isAdmin: true, role: "admin", addedAt: new Date()}`
+5. Or run `setupInitialAdmins()` from browser console (see adminUtils.ts)
 
 
 ## Support
