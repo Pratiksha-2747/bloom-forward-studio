@@ -2,8 +2,15 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import introImage from "@/assets/intro-image.jpg";
 import introHover from "@/assets/intro-hover.jpg";
+interface IntroSectionProps {
+  image?: string;
+  hoverImage?: string;
+}
 
-const IntroSection = () => {
+const IntroSection = ({ 
+  image = introImage, 
+  hoverImage = introHover,
+}: IntroSectionProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -52,7 +59,7 @@ const IntroSection = () => {
             <div className="relative rounded-2xl overflow-hidden shadow-strong aspect-[4/5]">
               {/* Default Image */}
               <img
-                src={introImage}
+                src={image}
                 alt="Bloom Branding Team"
                 className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
                   isHovered ? "opacity-0" : "opacity-100"
@@ -60,7 +67,7 @@ const IntroSection = () => {
               />
               {/* Hover Image */}
               <img
-                src={introHover}
+                src={hoverImage}
                 alt="Bloom Branding Team at Work"
                 className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
                   isHovered ? "opacity-100" : "opacity-0"

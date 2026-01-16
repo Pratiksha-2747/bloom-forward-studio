@@ -5,6 +5,10 @@ import { useEffect, useState } from "react";
 import { db } from "@/lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
 
+interface ServicesSectionProps {
+  image?: string;
+}
+
 const services = [
   "Brand Strategy",
   "Content Creation",
@@ -13,6 +17,7 @@ const services = [
   "Digital Experiences",
 ];
 
+<<<<<<< HEAD
 const ServicesSection = () => {
   const [image, setImage] = useState(servicesImage);
 
@@ -24,6 +29,9 @@ const ServicesSection = () => {
     load();
   }, []);
 
+=======
+const ServicesSection = ({ image = servicesImage }: ServicesSectionProps) => {
+>>>>>>> 4be3222ebf7f98acff2afe4827859a5c4cb6af1c
   return (
     <section className="py-24 md:py-32 bg-bloom-cream">
       <div className="container mx-auto px-6">
