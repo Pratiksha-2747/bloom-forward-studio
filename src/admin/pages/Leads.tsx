@@ -75,117 +75,116 @@ const Leads = () => {
   );
 
   return (
-    <motion.div
-      className="admin-leads"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.4 }}
-    >
-      <motion.h1
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.1 }}
-      >
-        Leads
-      </motion.h1>
-
-      {/* Search & Filter */}
+    <div className="p-8">
       <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.15 }}
-        style={{ display: "flex", gap: "1rem", marginBottom: "1.5rem" }}
+        className="admin-leads"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4 }}
       >
-        <input
-          type="text"
-          placeholder="Search by name or email"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          style={{
-            padding: "0.6rem",
-            borderRadius: "8px",
-            border: "1px solid #ddd",
-            flex: 1,
-          }}
-        />
-
-        <select
-          value={serviceFilter}
-          onChange={(e) => setServiceFilter(e.target.value)}
-          style={{
-            padding: "0.6rem",
-            borderRadius: "8px",
-            border: "1px solid #ddd",
-          }}
+        <motion.h1
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.1 }}
+          className="text-3xl font-semibold text-foreground mb-6"
         >
-          <option value="">All Services</option>
-          {allServices.map((service) => (
-            <option key={service} value={service}>
-              {service}
-            </option>
-          ))}
-        </select>
-      </motion.div>
+          Leads
+        </motion.h1>
 
-      {filteredLeads.length === 0 && (
-        <p className="text-muted-foreground italic">
-          No leads match your search.
-        </p>
-      )}
+        {/* Search & Filter */}
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.15 }}
+          className="flex gap-4 mb-6"
+        >
+          <input
+            type="text"
+            placeholder="Search by name or email"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="flex-1 px-4 py-2 rounded-lg border border-border bg-background text-foreground"
+          />
 
-      <AnimatePresence>
-        {filteredLeads.map((lead) => (
-          <motion.div
-            key={lead.id}
-            className="lead-card"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.25 }}
+          <select
+            value={serviceFilter}
+            onChange={(e) => setServiceFilter(e.target.value)}
+            className="px-4 py-2 rounded-lg border border-border bg-background text-foreground"
           >
-            <div>
-              <h3>{lead.name}</h3>
+            <option value="">All Services</option>
+            {allServices.map((service) => (
+              <option key={service} value={service}>
+                {service}
+              </option>
+            ))}
+          </select>
+        </motion.div>
 
-              <p>
-                <strong>Email:</strong> {lead.email}
-              </p>
+        {filteredLeads.length === 0 && (
+          <p className="text-muted-foreground italic">
+            No leads match your search.
+          </p>
+        )}
 
-              {lead.services && (
-                <p>
-                  <strong>Services:</strong> {lead.services.join(", ")}
-                </p>
-              )}
+        <AnimatePresence>
+          {filteredLeads.map((lead) => (
+            <motion.div
+              key={lead.id}
+              className="lead-card rounded-xl bg-card p-6 mb-4 shadow-soft"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
+            >
+              <div className="flex justify-between">
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-foreground">{lead.name}</h3>
 
-              <p className="message">{lead.message}</p>
+                  <p className="text-sm text-muted-foreground">
+                    <strong>Email:</strong> {lead.email}
+                  </p>
 
-              {/* Status badge */}
-              <span
-                style={{
-                  display: "inline-block",
-                  marginTop: "0.5rem",
-                  padding: "0.3rem 0.6rem",
-                  borderRadius: "999px",
-                  fontSize: "0.75rem",
-                  fontWeight: 500,
-                  background: lead.contacted ? "#e6f6ee" : "#fdecea",
-                  color: lead.contacted ? "#1f7a4f" : "#a61b1b",
-                }}
-              >
-                {lead.contacted ? "Contacted" : "Not contacted"}
-              </span>
-            </div>
+                  {lead.services && (
+                    <p className="text-sm text-muted-foreground">
+                      <strong>Services:</strong> {lead.services.join(", ")}
+                    </p>
+                  )}
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-              <button onClick={() => toggleContacted(lead.id, lead.contacted)}>
-                Mark as {lead.contacted ? "Not Contacted" : "Contacted"}
-              </button>
+                  <p className="message text-foreground mt-2">{lead.message}</p>
 
-              <button onClick={() => handleDelete(lead.id)}>Delete</button>
-            </div>
-          </motion.div>
-        ))}
-      </AnimatePresence>
-    </motion.div>
+                  {/* Status badge */}
+                  <span
+                    className={`inline-block mt-2 px-3 py-1 rounded-full text-xs font-medium ${
+                      lead.contacted
+                        ? "bg-green-100 text-green-800"
+                        : "bg-red-100 text-red-800"
+                    }`}
+                  >
+                    {lead.contacted ? "Contacted" : "Not contacted"}
+                  </span>
+                </div>
+
+                <div className="flex flex-col gap-2 ml-4">
+                  <button
+                    onClick={() => toggleContacted(lead.id, lead.contacted)}
+                    className="px-3 py-1 bg-primary text-primary-foreground rounded hover:bg-primary/90 transition text-sm"
+                  >
+                    Mark as {lead.contacted ? "Not Contacted" : "Contacted"}
+                  </button>
+
+                  <button
+                    onClick={() => handleDelete(lead.id)}
+                    className="px-3 py-1 bg-destructive text-destructive-foreground rounded hover:bg-destructive/90 transition text-sm"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
+    </div>
   );
 };
 

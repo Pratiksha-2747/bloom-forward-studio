@@ -5,18 +5,16 @@ import { auth } from "@/lib/firebase";
 
 import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
-<<<<<<< HEAD
 import Leads from "../pages/Leads";
 import Services from "../pages/Services";
 import Instagram from "../pages/Instagram"; // ✅ REQUIRED IMPORT
-=======
-import Services from "../pages/Services";
 
 import HomeImages from "../pages/services/HomeImages";
 import WorkImages from "../pages/services/WorkImages";
 import JourneyImages from "../pages/services/JourneyImages";
 import ServicesImages from "../pages/services/ServicesImages";
->>>>>>> 4be3222ebf7f98acff2afe4827859a5c4cb6af1c
+
+import AdminLayout from "../components/AdminLayout";
 
 const AdminRoutes = () => {
   const [user, loading] = useAuthState(auth);
@@ -33,59 +31,88 @@ const AdminRoutes = () => {
         element={!user ? <Login /> : <Navigate to="/admin" />}
       />
 
-<<<<<<< HEAD
-=======
-      {/* DASHBOARD = INDEX */}
->>>>>>> 4be3222ebf7f98acff2afe4827859a5c4cb6af1c
-      <Route
-        index
-        element={user ? <Dashboard /> : <Navigate to="/admin/login" />}
-      />
+      {/* PROTECTED ROUTES */}
+      {user ? (
+        <>
+          {/* DASHBOARD = INDEX */}
+          <Route
+            index
+            element={
+              <AdminLayout>
+                <Dashboard />
+              </AdminLayout>
+            }
+          />
 
-<<<<<<< HEAD
-      <Route
-        path="leads"
-        element={user ? <Leads /> : <Navigate to="/admin/login" />}
-      />
+          <Route
+            path="leads"
+            element={
+              <AdminLayout>
+                <Leads />
+              </AdminLayout>
+            }
+          />
 
-=======
-      {/* SERVICES MENU */}
->>>>>>> 4be3222ebf7f98acff2afe4827859a5c4cb6af1c
-      <Route
-        path="services"
-        element={user ? <Services /> : <Navigate to="/admin/login" />}
-      />
+          {/* SERVICES MENU */}
+          <Route
+            path="services"
+            element={
+              <AdminLayout>
+                <Services />
+              </AdminLayout>
+            }
+          />
 
-<<<<<<< HEAD
-      {/* ✅ INSTAGRAM ADMIN PAGE */}
-      <Route
-        path="instagram"
-        element={user ? <Instagram /> : <Navigate to="/admin/login" />}
-      />
+          {/* ✅ INSTAGRAM ADMIN PAGE */}
+          <Route
+            path="instagram"
+            element={
+              <AdminLayout>
+                <Instagram />
+              </AdminLayout>
+            }
+          />
 
-      <Route path="*" element={<Navigate to="/admin/dashboard" />} />
-=======
-      {/* SERVICES FORMS */}
-      <Route
-        path="services/home"
-        element={user ? <HomeImages /> : <Navigate to="/admin/login" />}
-      />
-      <Route
-        path="services/work"
-        element={user ? <WorkImages /> : <Navigate to="/admin/login" />}
-      />
-      <Route
-        path="services/journey"
-        element={user ? <JourneyImages /> : <Navigate to="/admin/login" />}
-      />
-      <Route
-        path="services/service"
-        element={user ? <ServicesImages /> : <Navigate to="/admin/login" />}
-      />
+          {/* SERVICES FORMS */}
+          <Route
+            path="services/home"
+            element={
+              <AdminLayout>
+                <HomeImages />
+              </AdminLayout>
+            }
+          />
+          <Route
+            path="services/work"
+            element={
+              <AdminLayout>
+                <WorkImages />
+              </AdminLayout>
+            }
+          />
+          <Route
+            path="services/journey"
+            element={
+              <AdminLayout>
+                <JourneyImages />
+              </AdminLayout>
+            }
+          />
+          <Route
+            path="services/service"
+            element={
+              <AdminLayout>
+                <ServicesImages />
+              </AdminLayout>
+            }
+          />
+        </>
+      ) : (
+        <Route path="*" element={<Navigate to="/admin/login" />} />
+      )}
 
       {/* FALLBACK */}
-      <Route path="*" element={<Navigate to="/admin" />} />
->>>>>>> 4be3222ebf7f98acff2afe4827859a5c4cb6af1c
+      <Route path="*" element={<Navigate to="/admin/login" />} />
     </Routes>
   );
 };

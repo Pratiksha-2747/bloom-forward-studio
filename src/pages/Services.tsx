@@ -14,9 +14,6 @@ import production from "@/assets/service/production.jpeg";
 import infl from "@/assets/service/infl.jpeg";
 import creative from "@/assets/service/creative.jpeg";
 import { Check } from "lucide-react";
-import { useEffect, useState } from "react";
-import { db } from "@/lib/firebase";
-import { doc, getDoc } from "firebase/firestore";
 
 interface ServicePageImages {
   mainImage?: string;
@@ -42,13 +39,9 @@ const services = [
       "Brand Guidelines",
       "Packaging Design",
     ],
-<<<<<<< HEAD
-    fallback: servicesImage,
     image: brand,
-=======
     imageKey: "service1" as const,
     fallback: brand,
->>>>>>> 4be3222ebf7f98acff2afe4827859a5c4cb6af1c
   },
   {
     id: "service-2",
@@ -63,13 +56,9 @@ const services = [
       "Analytics & Reporting",
       "Paid Social Campaigns",
     ],
-<<<<<<< HEAD
-    fallback: introImage,
     image: marketing,
-=======
     imageKey: "service2" as const,
     fallback: marketing,
->>>>>>> 4be3222ebf7f98acff2afe4827859a5c4cb6af1c
   },
   {
     id: "service-3",
@@ -84,13 +73,9 @@ const services = [
       "Post-Production",
       "Art Direction",
     ],
-<<<<<<< HEAD
-    fallback: servicesImage,
     image: production,
-=======
     imageKey: "service3" as const,
     fallback: production,
->>>>>>> 4be3222ebf7f98acff2afe4827859a5c4cb6af1c
   },
   {
     id: "service-4",
@@ -105,13 +90,9 @@ const services = [
       "Performance Tracking",
       "Content Collaboration",
     ],
-<<<<<<< HEAD
-    fallback: introImage,
     image: infl,
-=======
     imageKey: "service4" as const,
     fallback: infl,
->>>>>>> 4be3222ebf7f98acff2afe4827859a5c4cb6af1c
   },
   {
     id: "service-5",
@@ -126,18 +107,13 @@ const services = [
       "Digital Assets",
       "Print Design",
     ],
-<<<<<<< HEAD
-    fallback: servicesImage,
     image: creative,
-=======
     imageKey: "service5" as const,
     fallback: creative,
->>>>>>> 4be3222ebf7f98acff2afe4827859a5c4cb6af1c
   },
 ];
 
 const Services = () => {
-<<<<<<< HEAD
   const [images, setImages] = useState<Record<string, string>>({});
 
   useEffect(() => {
@@ -153,7 +129,6 @@ const Services = () => {
     loadImages();
   }, []);
 
-=======
   const [serviceImages, setServiceImages] = useState<ServicePageImages>({});
 
   useEffect(() => {
@@ -178,7 +153,6 @@ const Services = () => {
 
   const mainImage = getImageUrl("mainImage", c1);
   const ctaImage = getImageUrl("inquireImage", servicesImage);
->>>>>>> 4be3222ebf7f98acff2afe4827859a5c4cb6af1c
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -214,11 +188,7 @@ const Services = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <img
-<<<<<<< HEAD
-                  src={images["service-1"] || introImage}
-=======
                   src={mainImage}
->>>>>>> 4be3222ebf7f98acff2afe4827859a5c4cb6af1c
                   alt="Our Services"
                   className="rounded-2xl shadow-strong w-full h-[400px] object-cover"
                 />
