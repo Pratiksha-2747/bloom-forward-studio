@@ -9,17 +9,38 @@ import ReviewsSection from "@/components/home/ReviewsSection";
 import ClientLogosSection from "@/components/home/ClientLogosSection";
 import InstagramSection from "@/components/home/InstagramSection";
 
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../lib/firebase";
+import { useEffect, useState } from "react";
+
 const Index = () => {
+  const [images, setImages] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      const snap = await getDoc(doc(db, "siteImages", "home"));
+      if (snap.exists()) {
+        setImages(snap.data());
+      }
+    };
+    fetchImages();
+  }, []);
+
+  if (!images) return null;
+
   return (
     <div className="min-h-screen">
       <Navbar />
       <main>
-        <HeroSection />
-        <IntroSection />
-        <ServicesSection />
-        <WorkSection />
+        <HeroSection image={images.heroBg} />
+        <IntroSection
+          image={images.introImage}
+          hoverImage={images.introHoverImage}
+        />
+        <ServicesSection image={images.servicesImage} />
+        <WorkSection images={images} />
         <JourneySection />
-        <ReviewsSection />
+        <ReviewsSection bgImage={images.reviewsBg} />
         <ClientLogosSection />
         <InstagramSection />
       </main>

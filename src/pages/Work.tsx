@@ -8,8 +8,20 @@ import work3 from "@/assets/work/work3.jpeg";
 import work4 from "@/assets/work/work4.jpeg";
 import work5 from "@/assets/work/work5.jpeg";
 import work6 from "@/assets/work/work6.jpeg";
+import { useState, useEffect } from "react";
+import { getDoc, doc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import introImage from "@/assets/intro-image.jpg";
 import servicesImage from "@/assets/services-image.jpg";
+
+interface WorkImages {
+  workImage1?: string;
+  workImage2?: string;
+  workImage3?: string;
+  workImage4?: string;
+  workImage5?: string;
+  workImage6?: string;
+}
 
 const works = [
   {
@@ -18,7 +30,8 @@ const works = [
     category: "Brand Identity + Packaging",
     description:
       "Our art direction sought to capture the essence of their sophisticated dainty designs in an aesthetic way. 💍💎 Our services extend beyond the lens, offering a spectrum of digital marketing solutions 💫",
-    image: work1,
+    imageKey: "workImage1" as const,
+    fallback: work1,
   },
   {
     id: 2,
@@ -27,6 +40,8 @@ const works = [
     description:
       "For Life's A Beach, we didn't design products for occasions. We designed them for moments — sun-drenched afternoons, salty hair, slow walks by the shore, and memories that stay long after the tide recedes. 🌴✨",
     image: work3,
+    imageKey: "workImage2" as const,
+    fallback: work2,
   },
   {
     id: 3,
@@ -35,6 +50,8 @@ const works = [
     description:
       "For Binal Patel, we didn't focus on trends or seasons alone. We focused on emotion — the quiet confidence of a woman, the grace in her movement, and the stories woven into every silhouette. ✨",
     image: work4,
+    imageKey: "workImage3" as const,
+    fallback: work3,
   },
   {
     id: 4,
@@ -43,6 +60,8 @@ const works = [
     description:
       "At Thyme & Whisk, we didn't just shape a menu. We shaped moments — slow mornings, unhurried conversations, the comfort of familiar flavors, and the joy of something thoughtfully made. 🍃☕",
     image: work5,
+    imageKey: "workImage4" as const,
+    fallback: work4,
   },
   {
     id: 5,
@@ -51,6 +70,8 @@ const works = [
     description:
       "For Moire Rugs, we didn't focus only on patterns and textures. We focused on the quiet luxury of everyday living — soft mornings, sunlit corners, and homes that tell stories through detail. ✨",
     image: work6,
+    imageKey: "workImage5" as const,
+    fallback: introImage,
   },
   {
     id: 6,
@@ -59,6 +80,8 @@ const works = [
     description:
       "Where possible, your logo should tell a story. A short, remarkable, to-the-point kind of story 🌻",
     image: work2,
+    imageKey: "workImage6" as const,
+    fallback: servicesImage,
   },
 ];
 
@@ -114,6 +137,27 @@ const bloomValues = [
 ];
 
 const Work = () => {
+  const [workImages, setWorkImages] = useState<WorkImages>({});
+
+  useEffect(() => {
+    const fetchWorkImages = async () => {
+      try {
+        const docRef = doc(db, "siteImages", "work");
+        const snapshot = await getDoc(docRef);
+        if (snapshot.exists()) {
+          setWorkImages(snapshot.data() as WorkImages);
+        }
+      } catch (error) {
+        console.error("Error fetching work images:", error);
+      }
+    };
+
+    fetchWorkImages();
+  }, []);
+
+  const getImageUrl = (imageKey: keyof WorkImages, fallback: string): string => {
+    return workImages[imageKey] || fallback;
+  };
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -185,7 +229,7 @@ const Work = () => {
                   <div className={index % 2 === 1 ? "lg:order-2" : ""}>
                     <div className="overflow-hidden rounded-2xl shadow-strong">
                       <img
-                        src={work.image}
+                        src={getImageUrl(work.imageKey, work.fallback)}
                         alt={work.title}
                         className="w-full h-[400px] lg:h-[500px] object-cover transition-transform duration-700 hover:scale-105"
                       />

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import AdminHeader from "../components/AdminHeader";
 
 const Dashboard = () => {
@@ -15,26 +16,35 @@ const Dashboard = () => {
         </p>
 
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-xl bg-card p-6 shadow-soft">
-            <h2 className="text-lg font-medium">Leads</h2>
-            <p className="mt-1 text-sm text-muted-foreground">
-              View and manage contact form submissions.
-            </p>
-          </div>
+          {/* Leads */}
+          <Link to="/admin/leads" className="block">
+            <div className="rounded-xl bg-card p-6 shadow-soft hover:shadow-md transition cursor-pointer">
+              <h2 className="text-lg font-medium">Leads</h2>
+              <p className="mt-1 text-sm text-muted-foreground">
+                View and manage contact form submissions.
+              </p>
+            </div>
+          </Link>
 
-          <div className="rounded-xl bg-card p-6 shadow-soft">
-            <h2 className="text-lg font-medium">Services</h2>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Edit services shown on the website.
-            </p>
-          </div>
+          {/* Services */}
+          <Link to="/admin/services" className="block">
+            <div className="rounded-xl bg-card p-6 shadow-soft hover:shadow-md transition cursor-pointer">
+              <h2 className="text-lg font-medium">Services</h2>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Edit services shown on the website.
+              </p>
+            </div>
+          </Link>
 
-          <div className="rounded-xl bg-card p-6 shadow-soft">
-            <h2 className="text-lg font-medium">Instagram</h2>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Manage Instagram posts displayed on the homepage.
-            </p>
-          </div>
+          {/* Instagram */}
+          <Link to="/admin/instagram" className="block">
+            <div className="rounded-xl bg-card p-6 shadow-soft hover:shadow-md transition cursor-pointer">
+              <h2 className="text-lg font-medium">Instagram</h2>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Manage Instagram posts displayed on the homepage.
+              </p>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

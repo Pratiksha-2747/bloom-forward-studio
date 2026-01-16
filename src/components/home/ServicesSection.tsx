@@ -2,6 +2,10 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import servicesImage from "@/assets/services-image.jpg";
 
+interface ServicesSectionProps {
+  image?: string;
+}
+
 const services = [
   "Brand Strategy",
   "Content Creation",
@@ -10,7 +14,7 @@ const services = [
   "Digital Experiences",
 ];
 
-const ServicesSection = () => {
+const ServicesSection = ({ image = servicesImage }: ServicesSectionProps) => {
   return (
     <section className="py-24 md:py-32 bg-bloom-cream">
       <div className="container mx-auto px-6">
@@ -25,7 +29,7 @@ const ServicesSection = () => {
           >
             <div className="relative rounded-3xl overflow-hidden shadow-strong">
               <img
-                src={servicesImage}
+                src={image}
                 alt="Our Services"
                 className="w-full h-[500px] lg:h-[600px] object-cover"
               />

@@ -4,6 +4,12 @@ import { auth } from "@/lib/firebase";
 
 import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
+import Services from "../pages/Services";
+import HomeImages from "../pages/services/HomeImages";
+import WorkImages from "../pages/services/WorkImages";
+import JourneyImages from "../pages/services/JourneyImages";
+
+
 
 const AdminRoutes = () => {
   const [user, loading] = useAuthState(auth);
@@ -23,6 +29,10 @@ const AdminRoutes = () => {
         element={user ? <Dashboard /> : <Navigate to="/admin/login" />}
       />
       <Route path="*" element={<Navigate to="/admin/login" />} />
+    <Route path="services" element={<Services />} />
+<Route path="services/home" element={<HomeImages />} />
+<Route path="services/work" element={<WorkImages />} />
+<Route path="services/journey" element={<JourneyImages />} />
     </Routes>
   );
 };

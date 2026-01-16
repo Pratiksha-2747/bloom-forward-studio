@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
 import reviewsBg from "@/assets/reviews-bg.jpg";
 
+interface ReviewsSectionProps {
+  bgImage?: string;
+}
+
 const reviews = [
   {
     id: 1,
@@ -32,13 +36,13 @@ const reviews = [
   },
 ];
 
-const ReviewsSection = () => {
+const ReviewsSection = ({ bgImage = reviewsBg }: ReviewsSectionProps) => {
   return (
     <section className="relative min-h-[120vh] flex items-center justify-center overflow-hidden">
       {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed"
-        style={{ backgroundImage: `url(${reviewsBg})` }}
+        style={{ backgroundImage: `url(${bgImage})` }}
       >
         <div className="absolute inset-0 bg-bloom-chocolate/50" />
       </div>

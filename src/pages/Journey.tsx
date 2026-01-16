@@ -3,6 +3,8 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import { getDoc, doc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import introImage from "@/assets/intro-image.jpg";
 import introHover from "@/assets/intro-hover.jpg";
 import servicesImage from "@/assets/services-image.jpg";
@@ -12,6 +14,16 @@ import team2 from "@/assets/journey/team2.png";
 import team3 from "@/assets/journey/team3.png";
 import team4 from "@/assets/journey/team4.png";
 import founder from "@/assets/journey/founder1.png";
+
+interface JourneyPageImages {
+  card1?: string;
+  card2?: string;
+  card3?: string;
+  card4?: string;
+  card5?: string;
+  inquireImage?: string;
+  introImage?: string;
+}
 
 const coreValues = [
   {
@@ -36,40 +48,96 @@ const coreValues = [
   },
 ];
 
-const timeline = [
-  {
-    year: "2020",
-    title: "The Beginning",
-    description: "Bloom Branding was founded with a vision to help brands tell their stories.",
-    image: team1,
-  },
-  {
-    year: "2021",
-    title: "Growing Together",
-    description: "Expanded our team and welcomed our first major brand partnerships.",
-    image: team2,
-  },
-  {
-    year: "2022",
-    title: "Studio Launch",
-    description: "Opened our dedicated creative studio space for production and collaboration.",
-    image: team3,
-  },
-  {
-    year: "2023",
-    title: "Full-Service Agency",
-    description: "Evolved into a comprehensive branding and digital experience agency.",
-    image: team4,
-  },
-  {
-    year: "2024",
-    title: "Blooming Forward",
-    description: "Continuing to grow, innovate, and help brands bloom across industries.",
-    image: introHover,
-  },
-];
+// const timeline = [
+//   {
+//     year: "2020",
+//     title: "The Beginning",
+//     description: "Bloom Branding was founded with a vision to help brands tell their stories.",
+//     image: team1,
+//   },
+//   {
+//     year: "2021",
+//     title: "Growing Together",
+//     description: "Expanded our team and welcomed our first major brand partnerships.",
+//     image: team2,
+//   },
+//   {
+//     year: "2022",
+//     title: "Studio Launch",
+//     description: "Opened our dedicated creative studio space for production and collaboration.",
+//     image: team3,
+//   },
+//   {
+//     year: "2023",
+//     title: "Full-Service Agency",
+//     description: "Evolved into a comprehensive branding and digital experience agency.",
+//     image: team4,
+//   },
+//   {
+//     year: "2024",
+//     title: "Blooming Forward",
+//     description: "Continuing to grow, innovate, and help brands bloom across industries.",
+//     image: introHover,
+//   },
+// ];
 
 const Journey = () => {
+  const [journeyImages, setJourneyImages] = useState<JourneyPageImages>({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchJourneyImages = async () => {
+      try {
+        const docRef = doc(db, "siteImages", "journey");
+        const snapshot = await getDoc(docRef);
+        if (snapshot.exists()) {
+          setJourneyImages(snapshot.data() as JourneyPageImages);
+        }
+      } catch (error) {
+        console.error("Error fetching journey images:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchJourneyImages();
+  }, []);
+
+  const timelineData = [
+    {
+      year: "2020",
+      title: "The Beginning",
+      description: "Bloom Branding was founded with a vision to help brands tell their stories.",
+      image: journeyImages.card1 || team1,
+    },
+    {
+      year: "2021",
+      title: "Growing Together",
+      description: "Expanded our team and welcomed our first major brand partnerships.",
+      image: journeyImages.card2 || team2,
+    },
+    {
+      year: "2022",
+      title: "Studio Launch",
+      description: "Opened our dedicated creative studio space for production and collaboration.",
+      image: journeyImages.card3 || team3,
+    },
+    {
+      year: "2023",
+      title: "Full-Service Agency",
+      description: "Evolved into a comprehensive branding and digital experience agency.",
+      image: journeyImages.card4 || team4,
+    },
+    {
+      year: "2024",
+      title: "Blooming Forward",
+      description: "Continuing to grow, innovate, and help brands bloom across industries.",
+      image: journeyImages.card5 || introHover,
+    },
+  ];
+
+  const heroImage = journeyImages.introImage && journeyImages.introImage.trim() ? journeyImages.introImage : introImage;
+  const ctaImage = journeyImages.inquireImage && journeyImages.inquireImage.trim() ? journeyImages.inquireImage : servicesImage;
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -107,6 +175,7 @@ const Journey = () => {
               >
                 <img
                   src={founder}
+                  // src={heroImage}
                   alt="Bloom Branding Team"
                   className="rounded-2xl shadow-strong w-full h-[600px] object-cover"
                 />
@@ -188,7 +257,7 @@ const Journey = () => {
               <div className="absolute left-1/2 top-0 bottom-0 w-px bg-border hidden lg:block" />
 
               <div className="space-y-16 lg:space-y-0">
-                {timeline.map((item, index) => (
+                {timelineData.map((item, index) => (
                   <motion.div
                     key={item.year}
                     initial={{
@@ -265,7 +334,7 @@ const Journey = () => {
         className="hidden lg:block"
       >
         <img
-          src={servicesImage}
+          src={ctaImage}
           alt="Let's Work Together"
           className="rounded-2xl shadow-strong w-full h-[400px] object-cover opacity-95"
         />

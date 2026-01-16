@@ -3,13 +3,17 @@ import { Link } from "react-router-dom";
 import { ArrowDown } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
-const HeroSection = () => {
+interface HeroSectionProps {
+  image?: string;
+}
+
+const HeroSection = ({ image = heroBg }: HeroSectionProps) => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background with Parallax Effect */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBg})` }}
+        style={{ backgroundImage: `url(${image})` }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-bloom-cream/70 via-bloom-cream/50 to-bloom-cream/80" />
       </div>

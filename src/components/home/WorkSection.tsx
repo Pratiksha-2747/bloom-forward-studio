@@ -5,34 +5,44 @@ import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
 import work4 from "@/assets/work-4.jpg";
 
-const works = [
-  {
-    id: 1,
-    title: "Serene Skincare",
-    category: "Brand Identity + Packaging",
-    image: work1,
-  },
-  {
-    id: 2,
-    title: "Cafe Bloom",
-    category: "Visual Identity + Social Media",
-    image: work2,
-  },
-  {
-    id: 3,
-    title: "Luna Studio",
-    category: "Website Design + Frontend",
-    image: work3,
-  },
-  {
-    id: 4,
-    title: "Amber Atelier",
-    category: "Content + Storytelling",
-    image: work4,
-  },
-];
+interface WorkSectionProps {
+  images?: {
+    work1: string;
+    work2: string;
+    work3: string;
+    work4: string;
+  };
+}
 
-const WorkSection = () => {
+const WorkSection = ({
+  images = { work1, work2, work3, work4 },
+}: WorkSectionProps) => {
+  const works = [
+    {
+      id: 1,
+      title: "Serene Skincare",
+      category: "Brand Identity + Packaging",
+      image: images.work1,
+    },
+    {
+      id: 2,
+      title: "Cafe Bloom",
+      category: "Visual Identity + Social Media",
+      image: images.work2,
+    },
+    {
+      id: 3,
+      title: "Luna Studio",
+      category: "Website Design + Frontend",
+      image: images.work3,
+    },
+    {
+      id: 4,
+      title: "Amber Atelier",
+      category: "Content + Storytelling",
+      image: images.work4,
+    },
+  ];
   return (
     <section className="py-24 md:py-32 bg-background">
       <div className="container mx-auto px-6">
