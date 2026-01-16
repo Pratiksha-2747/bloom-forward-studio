@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import bloomLogo from "@/assets/bloom-logo-text.png";
+import bloomLogo from "@/assets/bloom-logo-text.jpeg";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -30,11 +30,10 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
           ? "bg-background/95 backdrop-blur-md shadow-soft py-3"
           : "bg-transparent py-6"
-      }`}
+        }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
@@ -42,7 +41,7 @@ const Navbar = () => {
           <img
             src={bloomLogo}
             alt="Bloom Branding"
-            className="h-10 md:h-12 w-auto object-contain"
+            className="h-10 md:h-20 w-auto object-contain"
           />
         </Link>
 
@@ -52,11 +51,12 @@ const Navbar = () => {
             <Link
               key={link.path}
               to={link.path}
-              className={`nav-link text-sm tracking-wide uppercase ${
-                location.pathname === link.path
+
+              className={`nav-link text-lg tracking-wider uppercase
+               ${location.pathname === link.path
                   ? "text-foreground font-medium"
                   : ""
-              }`}
+                }`}
             >
               {link.name}
             </Link>
@@ -106,11 +106,10 @@ const Navbar = () => {
                   <Link
                     to={link.path}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`text-lg font-serif tracking-wide ${
-                      location.pathname === link.path
+                    className={`text-lg font-serif tracking-wide ${location.pathname === link.path
                         ? "text-primary"
                         : "text-foreground"
-                    }`}
+                      }`}
                   >
                     {link.name}
                   </Link>
