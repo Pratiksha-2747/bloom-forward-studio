@@ -2,6 +2,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { getDoc, doc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import servicesImage from "@/assets/services-image.jpg";
 import c1 from "@/assets/service/main.jpeg";
 import brand from "@/assets/service/brand.jpeg";
@@ -10,6 +13,16 @@ import production from "@/assets/service/production.jpeg";
 import infl from "@/assets/service/infl.jpeg";
 import creative from "@/assets/service/creative.jpeg";
 import { Check } from "lucide-react";
+
+interface ServicePageImages {
+  mainImage?: string;
+  inquireImage?: string;
+  service1?: string;
+  service2?: string;
+  service3?: string;
+  service4?: string;
+  service5?: string;
+}
 
 const services = [
   {
@@ -25,7 +38,8 @@ const services = [
       "Brand Guidelines",
       "Packaging Design",
     ],
-    image: brand,
+    imageKey: "service1" as const,
+    fallback: brand,
   },
   {
     id: 2,
@@ -40,7 +54,8 @@ const services = [
       "Analytics & Reporting",
       "Paid Social Campaigns",
     ],
-    image: marketing,
+    imageKey: "service2" as const,
+    fallback: marketing,
   },
   {
     id: 3,
@@ -55,7 +70,8 @@ const services = [
       "Post-Production",
       "Art Direction",
     ],
-    image: production,
+    imageKey: "service3" as const,
+    fallback: production,
   },
   {
     id: 4,
@@ -70,7 +86,8 @@ const services = [
       "Performance Tracking",
       "Content Collaboration",
     ],
-    image: infl,
+    imageKey: "service4" as const,
+    fallback: infl,
   },
   {
     id: 5,
@@ -85,11 +102,36 @@ const services = [
       "Digital Assets",
       "Print Design",
     ],
-    image: creative,
+    imageKey: "service5" as const,
+    fallback: creative,
   },
 ];
 
 const Services = () => {
+  const [serviceImages, setServiceImages] = useState<ServicePageImages>({});
+
+  useEffect(() => {
+    const fetchServiceImages = async () => {
+      try {
+        const docRef = doc(db, "siteImages", "service");
+        const snapshot = await getDoc(docRef);
+        if (snapshot.exists()) {
+          setServiceImages(snapshot.data() as ServicePageImages);
+        }
+      } catch (error) {
+        console.error("Error fetching service images:", error);
+      }
+    };
+
+    fetchServiceImages();
+  }, []);
+
+  const getImageUrl = (imageKey: keyof ServicePageImages, fallback: string): string => {
+    return serviceImages[imageKey] || fallback;
+  };
+
+  const mainImage = getImageUrl("mainImage", c1);
+  const ctaImage = getImageUrl("inquireImage", servicesImage);
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -125,7 +167,7 @@ const Services = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <img
-                  src={c1}
+                  src={mainImage}
                   alt="Our Services"
                   className="rounded-2xl shadow-strong w-full h-[400px] object-cover"
                 />
@@ -185,7 +227,7 @@ const Services = () => {
                     }`}
                 >
                   <img
-                    src={service.image}
+                    src={getImageUrl(service.imageKey, service.fallback)}
                     alt={service.title}
                     className="w-full h-full object-cover rounded-2xl shadow-strong"
                   />
@@ -228,7 +270,7 @@ const Services = () => {
         className="hidden lg:block"
       >
         <img
-          src={servicesImage}
+          src={ctaImage}
           alt="Let's Work Together"
           className="rounded-2xl shadow-strong w-full h-[400px] object-cover opacity-95"
         />

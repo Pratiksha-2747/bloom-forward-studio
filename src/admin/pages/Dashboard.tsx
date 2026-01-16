@@ -17,7 +17,7 @@ const Dashboard = () => {
 
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {/* Leads */}
-          <Link to="/admin/leads" className="block">
+          <Link to="/admin/leads">
             <div className="rounded-xl bg-card p-6 shadow-soft hover:shadow-md transition cursor-pointer">
               <h2 className="text-lg font-medium">Leads</h2>
               <p className="mt-1 text-sm text-muted-foreground">
@@ -27,17 +27,17 @@ const Dashboard = () => {
           </Link>
 
           {/* Services */}
-          <Link to="/admin/services" className="block">
+          <Link to="/admin/services">
             <div className="rounded-xl bg-card p-6 shadow-soft hover:shadow-md transition cursor-pointer">
               <h2 className="text-lg font-medium">Services</h2>
               <p className="mt-1 text-sm text-muted-foreground">
-                Edit services shown on the website.
+                Edit images shown across the website.
               </p>
             </div>
           </Link>
 
           {/* Instagram */}
-          <Link to="/admin/instagram" className="block">
+          <Link to="/admin/instagram">
             <div className="rounded-xl bg-card p-6 shadow-soft hover:shadow-md transition cursor-pointer">
               <h2 className="text-lg font-medium">Instagram</h2>
               <p className="mt-1 text-sm text-muted-foreground">

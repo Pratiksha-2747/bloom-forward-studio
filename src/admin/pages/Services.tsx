@@ -8,7 +8,7 @@ const Services = () => {
     { label: "Home Page Images", path: "/admin/services/home" },
     { label: "Our Work Images", path: "/admin/services/work" },
     { label: "Our Journey Images", path: "/admin/services/journey" },
-    { label: "Services Page Images", path: "/admin/services/services" },
+    { label: "Services Page Images", path: "/admin/services/service" },
   ];
 
   return (

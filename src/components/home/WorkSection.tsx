@@ -1,9 +1,19 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { getDoc, doc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
 import work4 from "@/assets/work-4.jpg";
+
+interface WorkSectionImages {
+  workImage1?: string;
+  workImage2?: string;
+  workImage3?: string;
+  workImage4?: string;
+}
 
 interface WorkSectionProps {
   images?: {
@@ -17,32 +27,68 @@ interface WorkSectionProps {
 const WorkSection = ({
   images = { work1, work2, work3, work4 },
 }: WorkSectionProps) => {
+  const [firestoreImages, setFirestoreImages] = useState<WorkSectionImages>({});
+
+  useEffect(() => {
+    const fetchWorkImages = async () => {
+      try {
+        const docRef = doc(db, "siteImages", "work");
+        const snapshot = await getDoc(docRef);
+        if (snapshot.exists()) {
+          const data = snapshot.data() as WorkSectionImages;
+          // Filter out empty strings and invalid entries
+          const validImages = Object.fromEntries(
+            Object.entries(data).filter(([_, value]) => typeof value === "string" && value.trim().length > 0)
+          );
+          setFirestoreImages(validImages);
+        }
+      } catch (error) {
+        console.error("Error fetching work images:", error);
+        // Keep firestoreImages as empty object on error, fallbacks will be used
+      }
+    };
+
+    fetchWorkImages();
+  }, []);
+
+  const getImageUrl = (imageKey: keyof WorkSectionImages, fallback: string): string => {
+    const firestoreImage = firestoreImages[imageKey];
+    return (firestoreImage && typeof firestoreImage === "string" && firestoreImage.trim().length > 0)
+      ? firestoreImage
+      : fallback;
+  };
+
   const works = [
     {
       id: 1,
       title: "Serene Skincare",
       category: "Brand Identity + Packaging",
-      image: images.work1,
+      imageKey: "workImage1" as const,
+      fallback: work1,
     },
     {
       id: 2,
       title: "Cafe Bloom",
       category: "Visual Identity + Social Media",
-      image: images.work2,
+      imageKey: "workImage2" as const,
+      fallback: work2,
     },
     {
       id: 3,
       title: "Luna Studio",
       category: "Website Design + Frontend",
-      image: images.work3,
+      imageKey: "workImage3" as const,
+      fallback: work3,
     },
     {
       id: 4,
       title: "Amber Atelier",
       category: "Content + Storytelling",
-      image: images.work4,
+      imageKey: "workImage4" as const,
+      fallback: work4,
     },
   ];
+
   return (
     <section className="py-24 md:py-32 bg-background">
       <div className="container mx-auto px-6">
@@ -76,7 +122,7 @@ const WorkSection = ({
                 <div className="relative overflow-hidden rounded-2xl card-lift">
                   <div className="aspect-[4/3] overflow-hidden">
                     <img
-                      src={work.image}
+                      src={getImageUrl(work.imageKey, work.fallback)}
                       alt={work.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
