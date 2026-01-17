@@ -43,8 +43,8 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
       style={{
         background: `linear-gradient(135deg,
           hsl(var(--bloom-chocolate)) 0%,
-          hsl(20 25% 25%) 50%,
-          hsl(20 30% 20%) 100%)`
+          hsl(180, 23%, 5%) 50%,
+          hsl(240, 2%, 13%) 100%)`
       }}
     >
       <div className="text-center relative">

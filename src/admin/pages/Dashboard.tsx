@@ -183,21 +183,7 @@ const Dashboard = () => {
       >
         <h2 className="text-xl font-serif font-medium mb-4">Admin Management</h2>
         <div className="space-y-4">
-          <div>
-            <h3 className="text-sm font-medium text-muted-foreground mb-2">Firebase Authentication System</h3>
-            <div className="bg-muted/50 p-4 rounded-lg">
-              <p className="text-sm text-muted-foreground mb-2">
-                Admin access is granted to any user with a valid Firebase Authentication account. Simply create user accounts in Firebase Auth to grant admin access.
-              </p>
-              <p className="text-sm text-muted-foreground">
-                No additional configuration needed - authentication is handled entirely through Firebase.
-              </p>
-            </div>
-          </div>
           <div className="text-sm text-muted-foreground">
-            <p>
-              To add admin access, create a new user account in Firebase Authentication Console
-            </p>
             <p className="text-sm text-muted-foreground mt-2">
               Admin panel URL: <code className="bg-muted px-1 py-0.5 rounded text-xs">/bloom-admin</code>
             </p>
