@@ -129,7 +129,7 @@
   }
   
   .btn-hero:hover {
-    background: hsl(222 82% 38%);
+    background: oklab(42.366% -0.02185 -0.18239);
     border-radius: 1.5rem;
     transform: translateY(-2px);
     box-shadow: var(--shadow-medium);
