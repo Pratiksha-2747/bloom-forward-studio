@@ -22,8 +22,10 @@ const ServicesSection = () => {
 
   useEffect(() => {
     const load = async () => {
-      const snap = await getDoc(doc(db, "services", "service-1"));
-      if (snap.exists()) setImage(snap.data().imageUrl);
+      const snap = await getDoc(doc(db, "siteImages", "home"));
+      if (snap.exists() && snap.data().servicesImage) {
+        setImage(snap.data().servicesImage);
+      }
     };
     load();
   }, []);

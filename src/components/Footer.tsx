@@ -99,7 +99,7 @@ const Footer = () => {
                 hello.bloombranding@gmail.com
               </a>
               <a
-                href="tel:+919876543210"
+                href="tel:+91097270 68674"
                 className="flex items-center gap-3 text-[#E8E6D8]/80 hover:text-[#E8E6D8] transition-colors text-sm"
               >
                 <Phone className="w-4 h-4" />
