@@ -5,15 +5,14 @@ import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import introImage from "@/assets/intro-image.jpg";
-import introHover from "@/assets/intro-hover.jpg";
 import servicesImage from "@/assets/services-image.jpg";
 import { Heart, Target, Sparkles, Users } from "lucide-react";
 import team1 from "@/assets/journey/team1.png";
 import team2 from "@/assets/journey/team2.png";
 import team3 from "@/assets/journey/team3.png";
 import team4 from "@/assets/journey/team4.png";
-import founder from "@/assets/journey/founder1.png";
+import team5 from "@/assets/journey/team5.png";
+import introImage from "@/assets/journey/founder1.png";
 
 interface JourneyPageImages {
   card1?: string;
@@ -47,39 +46,6 @@ const coreValues = [
     description: "True partnerships built on trust, transparency, and shared vision.",
   },
 ];
-
-// const timeline = [
-//   {
-//     year: "2020",
-//     title: "The Beginning",
-//     description: "Bloom Branding was founded with a vision to help brands tell their stories.",
-//     image: team1,
-//   },
-//   {
-//     year: "2021",
-//     title: "Growing Together",
-//     description: "Expanded our team and welcomed our first major brand partnerships.",
-//     image: team2,
-//   },
-//   {
-//     year: "2022",
-//     title: "Studio Launch",
-//     description: "Opened our dedicated creative studio space for production and collaboration.",
-//     image: team3,
-//   },
-//   {
-//     year: "2023",
-//     title: "Full-Service Agency",
-//     description: "Evolved into a comprehensive branding and digital experience agency.",
-//     image: team4,
-//   },
-//   {
-//     year: "2024",
-//     title: "Blooming Forward",
-//     description: "Continuing to grow, innovate, and help brands bloom across industries.",
-//     image: introHover,
-//   },
-// ];
 
 const Journey = () => {
   const [journeyImages, setJourneyImages] = useState<JourneyPageImages>({});
@@ -132,7 +98,7 @@ const Journey = () => {
       year: "2024",
       title: "Blooming Forward",
       description: "Continuing to grow, innovate, and help brands bloom across industries.",
-      image: journeyImages.card5 || introHover,
+      image: journeyImages.card5 || team5,
     },
   ];
 
@@ -174,7 +140,7 @@ const Journey = () => {
                 className="relative"
               >
                 <img
-                  src={founder}
+                  src={introImage}
                   // src={heroImage}
                   alt="Bloom Branding Team"
                   className="rounded-2xl shadow-strong w-full h-[600px] object-cover"

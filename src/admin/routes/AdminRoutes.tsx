@@ -1,23 +1,3 @@
-/**
- * Admin Routes Configuration
- *
- * This file handles routing for the admin panel with Firebase Authentication.
- *
- * ADMIN ACCESS CONTROL:
- * - Any user with a valid Firebase Authentication account can access admin routes
- * - Users must be authenticated with Firebase (email/password)
- * - Admin panel is accessible at: /bloom-admin (not /admin for security)
- *
- * SECURITY FLOW:
- * 1. User navigates to /bloom-admin (hidden/obscure path)
- * 2. User authenticates with Firebase (email/password)
- * 3. If authentication successful: show admin routes, else: redirect to login
- *
- * TO MANAGE ADMINS:
- * - Add/remove users in Firebase Authentication console
- * - Only users with Firebase Auth accounts can access the admin panel
- */
-
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/lib/firebase";

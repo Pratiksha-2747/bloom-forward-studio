@@ -1,9 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import servicesImage from "@/assets/services-image.jpg";
-import { useEffect, useState } from "react";
-import { db } from "@/lib/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import servicesImage from "@/assets/bbservice.jpeg";
 
 interface ServicesSectionProps {
   image?: string;
@@ -17,17 +14,7 @@ const services = [
   "Digital Experiences",
 ];
 
-const ServicesSection = () => {
-  const [image, setImage] = useState(servicesImage);
-
-  useEffect(() => {
-    const load = async () => {
-      const snap = await getDoc(doc(db, "services", "service-1"));
-      if (snap.exists()) setImage(snap.data().imageUrl);
-    };
-    load();
-  }, []);
-
+const ServicesSection = ({ image = servicesImage }: ServicesSectionProps) => {
   return (
     <section className="py-24 md:py-32 bg-bloom-cream">
       <div className="container mx-auto px-6">

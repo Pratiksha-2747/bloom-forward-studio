@@ -10,10 +10,9 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Start showing content after a brief delay
+
     const contentTimer = setTimeout(() => setShowContent(true), 200);
 
-    // Animate progress bar
     const progressInterval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
@@ -24,7 +23,6 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
       });
     }, 50);
 
-    // Complete loading after animation
     const completeTimer = setTimeout(() => onComplete(), 2500);
 
     return () => {

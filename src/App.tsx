@@ -12,7 +12,6 @@ import Journey from "./pages/Journey";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
-// ✅ ADMIN ROUTES
 import AdminRoutes from "./admin/routes/AdminRoutes";
 import Preloader from "./components/Preloader";
 

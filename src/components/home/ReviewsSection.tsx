@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import reviewsBg from "@/assets/reviews-bg.jpg";
+import reviewsBg from "@/assets/reviewsBg.jpg";
 
 interface ReviewsSectionProps {
   bgImage?: string;

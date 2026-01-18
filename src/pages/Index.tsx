@@ -37,7 +37,7 @@ const Index = () => {
           image={images.introImage}
           hoverImage={images.introHoverImage}
         />
-        <ServicesSection />
+        <ServicesSection image={images.servicesImage} />
         <WorkSection images={images} />
         <JourneySection />
         <ReviewsSection bgImage={images.reviewsBg} />

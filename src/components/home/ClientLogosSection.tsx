@@ -12,7 +12,7 @@ const clients = [
 ];
 
 const ClientLogosSection = () => {
-  // Duplicate the array for seamless loop
+
   const duplicatedClients = [...clients, ...clients];
 
   return (

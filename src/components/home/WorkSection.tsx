@@ -1,91 +1,45 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { getDoc, doc } from "firebase/firestore";
-import { db } from "@/lib/firebase";
-import work1 from "@/assets/work-1.jpg";
-import work2 from "@/assets/work-2.jpg";
-import work3 from "@/assets/work-3.jpg";
-import work4 from "@/assets/work-4.jpg";
 
-interface WorkSectionImages {
-  workImage1?: string;
-  workImage2?: string;
-  workImage3?: string;
-  workImage4?: string;
-}
+import work1 from "@/assets/work/work1.jpeg";
+import work2 from "@/assets/work/work2.jpeg";
+import work3 from "@/assets/work/work3.jpeg";
+import work4 from "@/assets/work/work4.jpeg";
 
 interface WorkSectionProps {
   images?: {
-    work1: string;
-    work2: string;
-    work3: string;
-    work4: string;
+    workImage1?: string;
+    workImage2?: string;
+    workImage3?: string;
+    workImage4?: string;
   };
 }
 
-const WorkSection = ({
-  images = { work1, work2, work3, work4 },
-}: WorkSectionProps) => {
-  const [firestoreImages, setFirestoreImages] = useState<WorkSectionImages>({});
-
-  useEffect(() => {
-    const fetchWorkImages = async () => {
-      try {
-        const docRef = doc(db, "siteImages", "work");
-        const snapshot = await getDoc(docRef);
-        if (snapshot.exists()) {
-          const data = snapshot.data() as WorkSectionImages;
-          // Filter out empty strings and invalid entries
-          const validImages = Object.fromEntries(
-            Object.entries(data).filter(([_, value]) => typeof value === "string" && value.trim().length > 0)
-          );
-          setFirestoreImages(validImages);
-        }
-      } catch (error) {
-        console.error("Error fetching work images:", error);
-        // Keep firestoreImages as empty object on error, fallbacks will be used
-      }
-    };
-
-    fetchWorkImages();
-  }, []);
-
-  const getImageUrl = (imageKey: keyof WorkSectionImages, fallback: string): string => {
-    const firestoreImage = firestoreImages[imageKey];
-    return (firestoreImage && typeof firestoreImage === "string" && firestoreImage.trim().length > 0)
-      ? firestoreImage
-      : fallback;
-  };
-
+const WorkSection = ({ images }: WorkSectionProps) => {
   const works = [
     {
       id: 1,
-      title: "Serene Skincare",
+      title: "ambc Gems",
       category: "Brand Identity + Packaging",
-      imageKey: "workImage1" as const,
-      fallback: work1,
+      image: images?.workImage1 || work1,
     },
     {
       id: 2,
-      title: "Cafe Bloom",
-      category: "Visual Identity + Social Media",
-      imageKey: "workImage2" as const,
-      fallback: work2,
+      title: "Life's A Beach",
+      category: "Visual Identity + Lifestyle",
+      image: images?.workImage2 || work2,
     },
     {
       id: 3,
-      title: "Luna Studio",
-      category: "Website Design + Frontend",
-      imageKey: "workImage3" as const,
-      fallback: work3,
+      title: "Binal Patel",
+      category: "Fashion Branding",
+      image: images?.workImage3 || work3,
     },
     {
       id: 4,
-      title: "Amber Atelier",
-      category: "Content + Storytelling",
-      imageKey: "workImage4" as const,
-      fallback: work4,
+      title: "Thyme & Whisk",
+      category: "Cafe Branding + Content",
+      image: images?.workImage4 || work4,
     },
   ];
 
@@ -122,7 +76,7 @@ const WorkSection = ({
                 <div className="relative overflow-hidden rounded-2xl card-lift">
                   <div className="aspect-[4/3] overflow-hidden">
                     <img
-                      src={getImageUrl(work.imageKey, work.fallback)}
+                      src={work.image}
                       alt={work.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />

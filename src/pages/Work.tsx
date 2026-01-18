@@ -11,8 +11,7 @@ import work6 from "@/assets/work/work6.jpeg";
 import { useState, useEffect } from "react";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import introImage from "@/assets/intro-image.jpg";
-import servicesImage from "@/assets/services-image.jpg";
+
 
 interface WorkImages {
   workImage1?: string;
@@ -26,7 +25,7 @@ interface WorkImages {
 const works = [
   {
     id: 1,
-    title: "Serene Skincare",
+    title: "ambc Gems",
     category: "Brand Identity + Packaging",
     description:
       "Our art direction sought to capture the essence of their sophisticated dainty designs in an aesthetic way. 💍💎 Our services extend beyond the lens, offering a spectrum of digital marketing solutions 💫",
@@ -71,7 +70,7 @@ const works = [
       "For Moire Rugs, we didn't focus only on patterns and textures. We focused on the quiet luxury of everyday living — soft mornings, sunlit corners, and homes that tell stories through detail. ✨",
     image: work6,
     imageKey: "workImage5" as const,
-    fallback: introImage,
+    fallback: work5,
   },
   {
     id: 6,
@@ -81,7 +80,7 @@ const works = [
       "Where possible, your logo should tell a story. A short, remarkable, to-the-point kind of story 🌻",
     image: work2,
     imageKey: "workImage6" as const,
-    fallback: servicesImage,
+    fallback: work6,
   },
 ];
 

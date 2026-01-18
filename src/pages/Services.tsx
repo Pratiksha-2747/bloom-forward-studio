@@ -6,7 +6,6 @@ import { useState, useEffect } from "react";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import servicesImage from "@/assets/services-image.jpg";
-import introImage from "@/assets/intro-image.jpg";
 import c1 from "@/assets/service/main.jpeg";
 import brand from "@/assets/service/brand.jpeg";
 import marketing from "@/assets/service/marketing.jpeg";

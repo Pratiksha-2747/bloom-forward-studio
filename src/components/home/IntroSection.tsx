@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import introImage from "@/assets/intro-image.jpg";
-import introHover from "@/assets/intro-hover.jpg";
+import introImage from "@/assets/journey/founder1.png";
+import introHover from "@/assets/hover-img.png";
 interface IntroSectionProps {
   image?: string;
   hoverImage?: string;

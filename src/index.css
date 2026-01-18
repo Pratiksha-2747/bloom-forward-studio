@@ -4,40 +4,33 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Bloom Branding Design System
-   Colors: Earl Gray, Electric Blue, Butter Yellow, Dark Chocolate
-   Typography: Playfair Display (serif), Inter (sans)
-   All colors in HSL format
-*/
-
 @layer base {
   :root {
-    /* Bloom Brand Colors */
-    --bloom-cream: 60 23% 88%;           /* Earl Gray #E8E6D8 */
-    --bloom-blue: 222 82% 48%;           /* Electric Blue #1E4BD8 */
-    --bloom-yellow: 49 42% 56%;          /* Butter Yellow #BDAF62 */
-    --bloom-chocolate: 20 21% 32%;       /* Dark Choc #624A41 */
-    
-    /* Semantic Mappings */
-    --background: 60 23% 92%;            /* Lighter cream for bg */
-    --foreground: 20 21% 20%;            /* Dark chocolate based */
 
-    --card: 60 23% 96%;                  /* Light cream cards */
+    --bloom-cream: 60 23% 88%;           
+    --bloom-blue: 222 82% 48%;           
+    --bloom-yellow: 49 42% 56%;          
+    --bloom-chocolate: 20 21% 32%;       
+   
+    --background: 60 23% 92%;            
+    --foreground: 20 21% 20%;           
+
+    --card: 60 23% 96%;                  
     --card-foreground: 20 21% 20%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 20 21% 20%;
 
-    --primary: 222 82% 48%;              /* Electric Blue */
+    --primary: 222 82% 48%;              
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 60 23% 88%;             /* Earl Gray */
+    --secondary: 60 23% 88%;             
     --secondary-foreground: 20 21% 32%;
 
     --muted: 60 15% 85%;
     --muted-foreground: 20 15% 45%;
 
-    --accent: 49 42% 56%;                /* Butter Yellow */
+    --accent: 49 42% 56%;                
     --accent-foreground: 20 21% 20%;
 
     --destructive: 0 84% 60%;
@@ -151,7 +144,6 @@
     color: hsl(var(--primary));
   }
 
-  /* Card with lift effect */
   .card-lift {
     transition: all 0.4s var(--transition-smooth);
     box-shadow: var(--shadow-soft);
@@ -162,7 +154,6 @@
     box-shadow: var(--shadow-strong);
   }
 
-  /* Marquee Animation */
   @keyframes marquee {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -176,7 +167,6 @@
     animation-play-state: paused;
   }
 
-  /* Fade In Animation */
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -192,7 +182,6 @@
     animation: fadeInUp 0.8s var(--transition-smooth) forwards;
   }
 
-  /* Count Up Section */
   .stat-circle {
     @apply relative flex flex-col items-center justify-center;
     width: clamp(160px, 20vw, 240px);
