@@ -2,13 +2,13 @@
 
 > A sophisticated digital branding platform engineered to showcase creative excellence and professional design services through an immersive, interactive web experience.
 
-## 🌟 Overview
+## Overview
 
 Bloom Branding Studio represents the convergence of cutting-edge web technologies and artistic design principles. This meticulously crafted React application serves as a comprehensive digital showcase for branding services, featuring an intuitive admin panel for content management and a polished public interface that captivates visitors with seamless animations and responsive design.
 
-## ✨ Key Features
+## Key Features
 
-### 🎨 Public Interface
+### Public Interface
 - **Dynamic Preloader**: Engaging "Bloom Branding" animation sequence with smooth transitions
 - **Responsive Design**: Fluid layouts optimized for all device categories
 - **Interactive Components**: Hover effects, smooth scrolling, and micro-interactions
@@ -17,20 +17,20 @@ Bloom Branding Studio represents the convergence of cutting-edge web technologie
 - **Journey Timeline**: Narrative presentation of brand evolution and milestones
 - **Contact Integration**: Streamlined communication channels for client inquiries
 
-### 🔐 Admin Dashboard
+### Admin Dashboard
 - **Secure Authentication**: Protected admin routes with role-based access control
 - **Content Management**: Intuitive interfaces for updating services, portfolio, and journey content
 - **Instagram Integration**: Automated social media content synchronization
 - **Lead Management**: Client inquiry tracking and response systems
 - **Image Management**: Organized asset libraries for different content categories
 
-### 🚀 Performance & UX
+### Performance & UX
 - **Optimized Loading**: Strategic asset management and lazy loading implementation
 - **SEO Friendly**: Semantic HTML structure and meta tag optimization
 - **Accessibility**: WCAG compliant design patterns and keyboard navigation
 - **Cross-browser Compatibility**: Consistent experience across modern browsers
 
-## 🛠️ Technology Architecture
+## Technology Architecture
 
 ### Frontend Framework
 - **React 18**: Modern component-based architecture with hooks and concurrent features
@@ -52,7 +52,7 @@ Bloom Branding Studio represents the convergence of cutting-edge web technologie
 - **PostCSS**: CSS processing and optimization pipeline
 - **Vitest**: Fast unit testing framework with Jest compatibility
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 bloom-forward-studio/
@@ -73,7 +73,7 @@ bloom-forward-studio/
 └── package.json          # Dependency management and scripts
 ```
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
 ### Prerequisites
 - Node.js (version 18.0.0 or higher)
@@ -125,7 +125,7 @@ bloom-forward-studio/
    - Vercel, Netlify, or traditional web hosting
    - Configure environment variables in deployment platform
 
-## 📋 Available Scripts
+## Available Scripts
 
 | Command | Description |
 |---------|-------------|
@@ -135,7 +135,7 @@ bloom-forward-studio/
 | `npm run lint` | Run ESLint for code quality checks |
 | `npm run test` | Execute test suite |
 
-## 🔧 Configuration
+## Configuration
 
 ### Firebase Setup
 1. Create Firebase project at [console.firebase.google.com](https://console.firebase.google.com)

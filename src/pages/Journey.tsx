@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import servicesImage from "@/assets/services-image.jpg";
@@ -69,30 +69,30 @@ const Journey = () => {
     fetchJourneyImages();
   }, []);
 
-  const timelineData = [
+  const timelineData = useMemo(() => [
     {
       year: "2020",
       title: "The Beginning",
       description: "Bloom Branding was founded with a vision to help brands tell their stories.",
-      image: journeyImages.card1 || team1,
+      image: journeyImages.card1 && journeyImages.card1.trim() ? journeyImages.card1 : team1,
     },
     {
       year: "2021",
       title: "Growing Together",
       description: "Expanded our team and welcomed our first major brand partnerships.",
-      image: journeyImages.card2 || team2,
+      image: journeyImages.card2 && journeyImages.card2.trim() ? journeyImages.card2 : team2,
     },
     {
       year: "2022",
       title: "Studio Launch",
       description: "Opened our dedicated creative studio space for production and collaboration.",
-      image: journeyImages.card3 || team3,
+      image: journeyImages.card3 && journeyImages.card3.trim() ? journeyImages.card3 : team3,
     },
     {
       year: "2023",
       title: "Full-Service Agency",
       description: "Evolved into a comprehensive branding and digital experience agency.",
-      image: journeyImages.card4 || team4,
+      image: journeyImages.card4 && journeyImages.card4.trim() ? journeyImages.card4 : team4,
     },
     {
       year: "2024",
@@ -100,7 +100,7 @@ const Journey = () => {
       description: "Continuing to grow, innovate, and help brands bloom across industries.",
       image: journeyImages.card5 || team5,
     },
-  ];
+  ], [journeyImages]);
 
   const heroImage = journeyImages.introImage && journeyImages.introImage.trim() ? journeyImages.introImage : introImage;
   const ctaImage = journeyImages.inquireImage && journeyImages.inquireImage.trim() ? journeyImages.inquireImage : servicesImage;

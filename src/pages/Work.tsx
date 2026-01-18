@@ -28,7 +28,7 @@ const works = [
     title: "ambc Gems",
     category: "Brand Identity + Packaging",
     description:
-      "Our art direction sought to capture the essence of their sophisticated dainty designs in an aesthetic way. 💍💎 Our services extend beyond the lens, offering a spectrum of digital marketing solutions 💫",
+      "For ambc Gems, we captured modern minimalism through refined art direction — highlighting their delicate designs with a global, sophisticated aesthetic that feels timeless and effortless. 💍💎",
     imageKey: "workImage1" as const,
     fallback: work1,
   },
@@ -74,10 +74,10 @@ const works = [
   },
   {
     id: 6,
-    title: "Luna Studio",
-    category: "Creative Agency",
+    title: "Izarah by Ritika",
+    category: "Visual Identity + Brand Design",
     description:
-      "Where possible, your logo should tell a story. A short, remarkable, to-the-point kind of story 🌻",
+      "For Izarah by Ritika, we crafted more than a logo. We shaped a visual identity rooted in warmth, elegance, and thoughtful detail — where curated palettes, refined tones, and intentional design come together to reflect the brand’s individuality and quiet brilliance. 🌻",
     image: work2,
     imageKey: "workImage6" as const,
     fallback: work6,
