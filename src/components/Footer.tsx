@@ -146,7 +146,7 @@ const Footer = () => {
               Crafted with ♥ for brands that bloom
             </p>
             <a
-              href="http://localhost:8080/bloom-admin/login"
+              href="/bloom-admin/login"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 bg-[#E8E6D8]/10 text-[#E8E6D8] rounded-md hover:bg-[#E8E6D8] hover:text-[#624A41] transition-all duration-300 text-sm font-medium"
