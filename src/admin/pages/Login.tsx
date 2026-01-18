@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/lib/firebase";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -26,11 +26,18 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <form
-        onSubmit={handleLogin}
-        className="w-full max-w-sm rounded-2xl bg-card p-8 shadow-lg"
+    <div className="min-h-screen bg-background relative">
+      <Link
+        to="/"
+        className="absolute top-4 right-4 rounded-lg border border-muted px-4 py-2 text-sm text-muted-foreground transition hover:bg-muted hover:text-foreground"
       >
+        Go to HomePage
+      </Link>
+      <div className="flex items-center justify-center min-h-screen">
+        <form
+          onSubmit={handleLogin}
+          className="w-full max-w-sm rounded-2xl bg-card p-8 shadow-lg"
+        >
         <h1 className="mb-2 text-center text-2xl font-serif font-semibold">
           Admin Login
         </h1>
@@ -73,6 +80,7 @@ const Login = () => {
         </button>
       </form>
     </div>
+  </div>
   );
 };
 
