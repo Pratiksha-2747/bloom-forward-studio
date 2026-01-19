@@ -109,7 +109,7 @@ const Contact = () => {
               </a>
 
               <a
-                href="https://instagram.com/bloombrandingstudio"
+                href="https://www.instagram.com/bloom.branding_/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-3 hover:text-bloom-yellow transition-colors duration-300 cursor-pointer"
